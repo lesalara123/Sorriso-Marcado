@@ -1,1 +1,106 @@
+# <Sorriso Marcado>
 
+<img src="loja/icone-512.png" width="96" align="right" alt="Ícone do app">
+
+O Sorriso Marcado ajuda pacientes a organizar e acompanhar suas consultas odontológicas de forma simples e prática.
+
+Projeto final da disciplina de Desenvolvimento Mobile Android — 3º ano do Ensino Médio, IFPE Campus Palmares · 2026.
+
+## 📱 O que o app faz
+
+<O Sorriso Marcado é um aplicativo de agenda odontológica desenvolvido para ajudar pacientes a organizarem suas consultas e compromissos com o dentista. A proposta é facilitar o acompanhamento das consultas, evitando esquecimentos e permitindo que o usuário tenha suas informações organizadas em um só lugar.
+
+Por meio do aplicativo, o usuário pode cadastrar suas consultas, visualizar os próximos atendimentos e consultar informações como data, horário, dentista e procedimento. Dessa forma, o paciente consegue acompanhar sua agenda odontológica de maneira rápida e prática.
+
+**Funcionalidades:**
+
+✅ Cadastro de consultas odontológicas
+✅ Visualização das consultas agendadas
+✅ Visualização dos detalhes de cada consulta
+✅ Edição e exclusão de consultas
+✅ Organização das consultas por data e horário
+✅ Lembrete das próximas consultas
+
+Fora do escopo desta versão: atendimento odontológico online, diagnóstico de problemas bucais, prescrição de medicamentos e integração direta com clínicas ou profissionais. Essas funcionalidades ficaram fora do escopo por exigirem sistemas externos e recursos específicos.
+
+🖼️ Telas
+|Tela principal|  |Cadastro de consulta|
+
+	
+
+| Item | Escolha |
+|---|---|
+| Linguagem | Kotlin |
+| Interface | Jetpack Compose / XML |
+| Persistência | Room / — |
+| Rede | Retrofit / — |
+| API consumida | <nome + link> |
+| `minSdk` / `targetSdk` | / |
+| Versão | 1.0 (versionCode 1) |
+
+
+Organização do código:
+
+app/src/main/java/br/edu/ifpe/sorrisomarcado/
+├── ui/     # telas
+├── data/   # Room
+└── MainActivity.kt
+
+## ⚠️ Tratamento de erros
+
+| Situação | O que o app faz |
+|---|---|
+| Sem internet | <mensagem exibida> |
+| Erro no servidor | <mensagem exibida> |
+| Nenhum dado salvo | <estado vazio explicado> |
+| Campo obrigatório vazio | <mensagem exibida> |
+
+## 🚀 Como rodar
+
+```bash
+git clone https://github.com/<usuario>/<repo>.git
+```
+
+1. Abra a pasta no Android Studio (versão <___>)
+2. Aguarde o *Gradle sync*
+3. <Se usa API com chave:> crie o arquivo `local.properties` com `API_KEY=suachave`
+4. Rode em um emulador ou celular com Android <___> ou superior
+
+## 📦 Como gerar o build de release
+
+```
+Android Studio → Build → Generate Signed App Bundle / APK
+```
+
+1. Escolha **APK** (para testar) ou **Android App Bundle** (para a loja)
+2. Crie/selecione a *keystore* — guarde a senha, sem ela não dá para atualizar o app depois
+3. *Build variant*: **release**
+4. Saída: `app/release/app-release.apk` (ou `.aab`)
+
+Os arquivos prontos estão em [`loja/`](loja/) e na [release v1.0](../../releases).
+
+**Testado em:** <modelo do aparelho — Android X> e <modelo do aparelho — Android Y>
+
+## 📚 Documentação do projeto
+
+- [Canvas do Projeto](CANVAS.md)
+- [PRD — requisitos](PRD.md)
+- [Registro de uso de IA](docs/USO_DE_IA.md)
+- [Material da loja](loja/)
+
+## 👥 Equipe
+
+| Nome | Responsável por | GitHub |
+|---|---|---|
+| | telas | [@usuario](https://github.com/usuario) |
+| | dados | |
+| | design | |
+| | documentação e build | |
+
+## 🤖 Uso de IA
+
+Este projeto usou ferramentas de IA como apoio ao desenvolvimento. O registro está em [`docs/USO_DE_IA.md`](docs/USO_DE_IA.md). Todo o código entregue é compreendido e pode ser explicado pelos integrantes.
+
+## 📄 Licença
+
+Projeto acadêmico, uso educacional.
