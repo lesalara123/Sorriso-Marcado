@@ -5,15 +5,14 @@ Página
 1
 🎯 Canvas do Projeto Final — App Android
 
-	
 
-Grupo nº	
 
-Integrantes (3 a 4)	Lara Emanuelle, Hiarlley Francisco e Marina Calado
-Turma	3º ano — Ensino Médio
-Repositório	https://github.com/____/____
-Data de preenchimento	16/09/2026
-Entrega final	10/12/2026
+Integrantes (3 a 4)	| Lara Emanuelle, Hiarlley Francisco e Marina Calado
+Turma	| 3º ano — Ensino Médio
+Repositório	| https://github.com/lesalara123/Sorriso-Marcado
+Data de preenchimento	| 16/09/2026
+Entrega final	| 10/12/2026
+
 🧩 Bloco 1 — Nome e pitch do app
 
 Nome do app: Sorriso Marcado
@@ -24,47 +23,43 @@ Pitch em uma frase:
 
 😖 Bloco 2 — Problema
 
-Qual dor real vocês estão resolvendo? Descrevam uma situação concreta que alguém vive hoje.
-
 Pacientes podem esquecer a data e o horário de suas consultas odontológicas.
 As informações das consultas podem ficar espalhadas em anotações, mensagens ou outros lugares.
 
 Como esse problema é resolvido hoje (sem o app)?
 
 Os pacientes costumam utilizar anotações no celular, papel, agenda ou mensagens para lembrar dos atendimentos.
-👥 Bloco 3 — Público-alvo
 
-Para quem é o app? Sejam específicos (idade, contexto, com que frequência usariam).
+👥 Bloco 3 — Público-alvo
 
 Perfil principal: Pacientes que precisam organizar suas consultas odontológicas.
 Quando/onde usam: Principalmente antes e depois de marcar uma consulta, para consultar datas, horários e informações do atendimento.
-Uma pessoa real que testaria o app: A definir pelo grupo.
-💡 Bloco 4 — Solução em uma tela
+Uma pessoa real que testaria o app: Paciente odontológico e Profissional Cirurgião Dentista.
 
-Descreva o que a tela principal mostra e o que o usuário consegue fazer nela.
+💡 Bloco 4 — Solução em uma tela
 
 A tela principal lista: As consultas odontológicas cadastradas, com informações de data, horário, dentista e procedimento.
 A ação principal do usuário é: Cadastrar uma nova consulta odontológica.
 Depois de agir, o usuário vê: A consulta cadastrada na lista da tela principal.
+
 ✅ Bloco 5 — Funcionalidades do MVP
 
 Máximo de 4 funcionalidades. Se tiver mais, corte. Lembre: qualidade acima de complexidade.
 
-#	Funcionalidade	Essencial?	Quem faz
-F1	Cadastro de consultas odontológicas	Sim	Lara Emanuelle
-F2	Visualização das consultas agendadas	Sim	Hiarlley Francisco
-F3	Edição e exclusão de consultas	Sim	Marina Calado
-F4	
+#	Funcionalidade |	Essencial?	| Quem faz
+F1	| Cadastro de consultas odontológicas| Sim |	 Lara Emanuelle
+F2	| Visualização das consultas agendadas| 	Sim	| Hiarlley Francisco
+F3  | Edição e exclusão de consultas | Sim	| Marina Calado
+	
 	
 	
 
 🚫 Bloco 6 — Fora do escopo
 
-O que o app não vai fazer nesta entrega. Escrever isso aqui protege vocês de perder o prazo.
-
 ❌ Atendimento odontológico online.
 ❌ Diagnóstico de problemas bucais ou prescrição de medicamentos.
 ❌ Integração direta com clínicas ou profissionais.
+
 ⚙️ Bloco 7 — Caminho técnico
 
 Marque uma opção (as três valem a mesma nota):
@@ -98,18 +93,18 @@ applicationId	br.edu.ifpe.sorrisomarcado
 Versão inicial	1.0 (versionCode 1)
 
 👤 Bloco 9 — Equipe, papéis e riscos
-Integrante	Papel principal	Responsável por
-Lara Emanuelle	Dev / telas	Interface e telas do aplicativo
-Hiarlley Francisco	Dev / dados (Room)	Banco de dados e persistência das consultas
-Marina Calado	Design e identidade visual	Logo, cores e identidade visual
+Integrante |	Papel principal| 	Responsável por
+Lara Emanuelle	| Dev / telas |	Interface e telas do aplicativo
+Hiarlley Francisco	| Dev / dados (Room)	| Banco de dados e persistência das consultas
+Marina Calado |	Design e identidade visual	| Logo, cores e identidade visual
 
 Todos programam. O "papel" define quem responde por aquela parte, não quem trabalha sozinho.
 
 Riscos — o que pode dar errado e o plano B:
 
-Risco	Plano B
-Problemas na implementação do banco de dados	Simplificar a estrutura do Room e revisar a implementação
-Atraso no desenvolvimento das telas	Priorizar as três funcionalidades principais do MVP
+Risco | 	Plano B
+Problemas na implementação do banco de dados |	Simplificar a estrutura do Room e revisar a implementação
+Atraso no desenvolvimento das telas	| Priorizar as três funcionalidades principais do MVP
 
 🤖 Bloco 10 — Acordo de trabalho com IA
 
