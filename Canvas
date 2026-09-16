@@ -3,202 +3,179 @@ Página
 1
 /
 1
-100%
-# 🎯 Canvas do Projeto Final — App Android
+🎯 Canvas do Projeto Final — App Android
 
-> **Como usar:** este é o primeiro documento do projeto. Preencha em grupo, em uma única aula, **antes de escrever qualquer linha de código**. Cada bloco tem no máximo 5 linhas — se não couber, o projeto está grande demais.
-> Depois de preenchido e validado pelo professor, ele vira a base do [`PRD.md`](PRD.md).
+	
 
-| | |
-|---|---|
-| **Grupo nº** | |
-| **Integrantes (3 a 4)** | |
-| **Turma** | 3º ano — Ensino Médio |
-| **Repositório** | `https://github.com/____/____` |
-| **Data de preenchimento** | ___/___/2026 |
-| **Entrega final** | **10/12/2026** |
+Grupo nº	
 
----
+Integrantes (3 a 4)	Lara Emanuelle, Hiarlley Francisco e Marina Calado
+Turma	3º ano — Ensino Médio
+Repositório	https://github.com/____/____
+Data de preenchimento	16/09/2026
+Entrega final	10/12/2026
+🧩 Bloco 1 — Nome e pitch do app
 
-## 🧩 Bloco 1 — Nome e pitch do app
+Nome do app: Sorriso Marcado
 
-**Nome do app:** _(máx. 30 caracteres — é o mesmo que vai na loja)_
+Pitch em uma frase:
 
-**Pitch em uma frase:**
-> "O **[nome]** ajuda **[quem]** a **[fazer o quê]** sem precisar de **[o problema atual]**."
+"O Sorriso Marcado ajuda pacientes a organizar e acompanhar suas consultas odontológicas sem precisar controlar os compromissos de forma desorganizada ou depender de anotações em papel."
 
-*Exemplo: "O TreinoDiário ajuda alunos de academia a registrar séries e cargas sem precisar de caderno de papel."*
-
----
-
-## 😖 Bloco 2 — Problema
+😖 Bloco 2 — Problema
 
 Qual dor real vocês estão resolvendo? Descrevam uma situação concreta que alguém vive hoje.
 
--
--
+Pacientes podem esquecer a data e o horário de suas consultas odontológicas.
+As informações das consultas podem ficar espalhadas em anotações, mensagens ou outros lugares.
 
-**Como esse problema é resolvido hoje (sem o app)?**
+Como esse problema é resolvido hoje (sem o app)?
 
--
-
----
-
-## 👥 Bloco 3 — Público-alvo
+Os pacientes costumam utilizar anotações no celular, papel, agenda ou mensagens para lembrar dos atendimentos.
+👥 Bloco 3 — Público-alvo
 
 Para quem é o app? Sejam específicos (idade, contexto, com que frequência usariam).
 
-- **Perfil principal:**
-- **Quando/onde usam:**
-- **Uma pessoa real que testaria o app:** _(nome e relação com o grupo — ela vai testar o `.apk` na Etapa 3)_
+Perfil principal: Pacientes que precisam organizar suas consultas odontológicas.
+Quando/onde usam: Principalmente antes e depois de marcar uma consulta, para consultar datas, horários e informações do atendimento.
+Uma pessoa real que testaria o app: A definir pelo grupo.
+💡 Bloco 4 — Solução em uma tela
 
----
+Descreva o que a tela principal mostra e o que o usuário consegue fazer nela.
 
-## 💡 Bloco 4 — Solução em uma tela
+A tela principal lista: As consultas odontológicas cadastradas, com informações de data, horário, dentista e procedimento.
+A ação principal do usuário é: Cadastrar uma nova consulta odontológica.
+Depois de agir, o usuário vê: A consulta cadastrada na lista da tela principal.
+✅ Bloco 5 — Funcionalidades do MVP
 
-Descreva o que a **tela principal** mostra e o que o usuário consegue fazer nela.
+Máximo de 4 funcionalidades. Se tiver mais, corte. Lembre: qualidade acima de complexidade.
 
-- **A tela principal lista:**
-- **A ação principal do usuário é:**
-- **Depois de agir, o usuário vê:**
+#	Funcionalidade	Essencial?	Quem faz
+F1	Cadastro de consultas odontológicas	Sim	Lara Emanuelle
+F2	Visualização das consultas agendadas	Sim	Hiarlley Francisco
+F3	Edição e exclusão de consultas	Sim	Marina Calado
+F4	
+	
+	
 
----
+🚫 Bloco 6 — Fora do escopo
 
-## ✅ Bloco 5 — Funcionalidades do MVP
+O que o app não vai fazer nesta entrega. Escrever isso aqui protege vocês de perder o prazo.
 
-Máximo de **4 funcionalidades**. Se tiver mais, corte. Lembre: *qualidade acima de complexidade*.
+❌ Atendimento odontológico online.
+❌ Diagnóstico de problemas bucais ou prescrição de medicamentos.
+❌ Integração direta com clínicas ou profissionais.
+⚙️ Bloco 7 — Caminho técnico
 
-| # | Funcionalidade | Essencial? | Quem faz |
-|---|---|---|---|
-| F1 | | Sim | |
-| F2 | | Sim | |
-| F3 | | Sim/Não | |
-| F4 | | Não | |
+Marque uma opção (as três valem a mesma nota):
 
----
+Opção A — Room: dados salvos no próprio celular.
 
-## 🚫 Bloco 6 — Fora do escopo
+Opção B — Retrofit: dados vindos de uma API pública.
 
-O que o app **não** vai fazer nesta entrega. Escrever isso aqui protege vocês de perder o prazo.
+Opção C — Desafio: API + salvar favoritos localmente.
 
-- ❌
-- ❌
-- ❌
+Se escolheu B ou C — qual API? Não se aplica.
 
-*Sugestões comuns de coisas a deixar de fora: login/cadastro, notificações push, chat, mapa, pagamento, modo offline completo, sincronização em nuvem.*
+Bibliotecas que o grupo vai usar:
 
----
+Kotlin
+Jetpack Compose
+Room
+AndroidX
 
-## ⚙️ Bloco 7 — Caminho técnico
+Onde entra o try/catch? Nas operações de acesso e manipulação dos dados, além de situações que possam causar erros durante o funcionamento do aplicativo.
 
-Marque **uma** opção (as três valem a mesma nota):
+Pode falhar: Salvamento, edição ou exclusão de uma consulta.
+O usuário vê a mensagem: Uma mensagem clara informando que não foi possível realizar a ação e orientando a tentar novamente.
 
-- [ ] **Opção A — Room:** dados salvos no próprio celular (lista de compras, agenda, diário de treino, controle financeiro)
-- [ ] **Opção B — Retrofit:** dados vindos de uma API pública (notícias, filmes, feed, clima)
-- [ ] **Opção C — Desafio:** API + salvar favoritos localmente
+🎨 Bloco 8 — Identidade visual
+Item	Definição do grupo
+Nome exibido (strings.xml)	Sorriso Marcado
+Cor principal (hex, em Color.kt)	#E86A92
+Ideia do ícone (512×512)	Tubarão menina fofinho, usando roupa de dentista e segurando um calendário com referência a uma consulta odontológica.
+applicationId	br.edu.ifpe.sorrisomarcado
+Versão inicial	1.0 (versionCode 1)
 
-**Se escolheu B ou C — qual API?** _(link da documentação + precisa de chave? é gratuita?)_
+👤 Bloco 9 — Equipe, papéis e riscos
+Integrante	Papel principal	Responsável por
+Lara Emanuelle	Dev / telas	Interface e telas do aplicativo
+Hiarlley Francisco	Dev / dados (Room)	Banco de dados e persistência das consultas
+Marina Calado	Design e identidade visual	Logo, cores e identidade visual
 
-**Bibliotecas que o grupo vai usar:**
+Todos programam. O "papel" define quem responde por aquela parte, não quem trabalha sozinho.
 
-**Onde entra o `try/catch`?** _(qual operação pode falhar: banco vazio, internet caindo, API fora do ar, campo em branco)_
+Riscos — o que pode dar errado e o plano B:
 
-- Pode falhar:
-- O usuário vê a mensagem:
+Risco	Plano B
+Problemas na implementação do banco de dados	Simplificar a estrutura do Room e revisar a implementação
+Atraso no desenvolvimento das telas	Priorizar as três funcionalidades principais do MVP
 
----
+🤖 Bloco 10 — Acordo de trabalho com IA
 
-## 🎨 Bloco 8 — Identidade visual
+A implementação pode ser feita com o Gemini no Android Studio. Vocês orientam, ele digita — e cada integrante precisa saber explicar o que entrou no projeto. Regras completas em docs/USO_DE_IA.md.
 
-| Item | Definição do grupo |
-|---|---|
-| Nome exibido (`strings.xml`) | |
-| Cor principal (hex, em `Color.kt`) | `#______` |
-| Ideia do ícone (512×512) | |
-| `applicationId` | `br.edu.ifpe.______` |
-| Versão inicial | `1.0` (versionCode `1`) |
+Três regras que vamos escrever no nosso AGENTS.md (o arquivo que diz à IA como trabalhar no nosso projeto):
 
----
+A IA deve seguir a estrutura e os padrões definidos pelo grupo no projeto.
+Nenhum código será aceito sem que os integrantes entendam o seu funcionamento.
+A IA deve ser utilizada como apoio, e não como substituição do conhecimento dos integrantes.
 
-## 👤 Bloco 9 — Equipe, papéis e riscos
+Combinados do grupo:
 
-| Integrante | Papel principal | Responsável por |
-|---|---|---|
-| | Dev / telas | |
-| | Dev / dados (Room ou Retrofit) | |
-| | Design e identidade visual | |
-| | Documentação, build e entrega | |
+Ninguém clica Accept no Agent Mode sem ler a mudança inteira.
 
-> Todos programam. O "papel" define quem **responde** por aquela parte, não quem trabalha sozinho.
+Quem aceitou o código escreve o comentário de fronteira do arquivo.
 
-**Riscos — o que pode dar errado e o plano B:**
+Antes de cada marco, revisamos juntos: alguém aqui não entende alguma parte?
 
-| Risco | Plano B |
-|---|---|
-| | |
-| | |
+Nenhuma chave de API ou senha vai para o prompt.
 
----
+Todos os integrantes devem conhecer e conseguir explicar as partes principais do projeto.
 
-## 🤖 Bloco 10 — Acordo de trabalho com IA
+Como vamos garantir que todos entendem tudo (ex.: quem implementa apresenta o arquivo aos outros; revezar as partes; revisar o pull request do colega):
 
-A implementação pode ser feita com o **Gemini no Android Studio**. Vocês orientam, ele digita — e cada integrante precisa saber explicar o que entrou no projeto. Regras completas em [`docs/USO_DE_IA.md`](docs/USO_DE_IA.md).
+O integrante responsável por cada parte apresenta o funcionamento do código aos demais integrantes, que revisam e tiram dúvidas antes da entrega.
 
-**Três regras que vamos escrever no nosso `AGENTS.md`** _(o arquivo que diz à IA como trabalhar no nosso projeto)_:
+🗓️ Bloco 11 — Marcos até 10/12
+Marco	Prazo	Como se comprova no GitHub
+M1 — Canvas preenchido + repositório criado	16/09	CANVAS.md no main
+M2 — PRD aprovado + telas rascunhadas	30/09	PRD.md + imagens em docs/
+M3 — Funcionalidade base rodando	21/10	tela principal lista consultas + cadastro + try/catch
+M4 — Dados completos (Room) e erros tratados	11/11	commits da camada de dados
+M5 — Identidade visual + .apk de release testado	25/11	ícone, cores, .apk testado por 2 pessoas de fora
+M6 — .aab + material de loja + README.md	02/12	pasta loja/ + README.md completo
+Entrega e apresentação	10/12	tag v1.0 no repositório
 
-1.
-2.
-3.
+🏁 Bloco 12 — Definição de pronto
 
-**Combinados do grupo:**
+O grupo só considera o app pronto quando todas estas frases forem verdadeiras:
 
-- [ ] Ninguém clica *Accept* no Agent Mode sem ler a mudança inteira.
-- [ ] Quem aceitou o código escreve o comentário de fronteira do arquivo.
-- [ ] Antes de cada marco, revisamos juntos: alguém aqui não entende alguma parte?
-- [ ] Nenhuma chave de API ou senha vai para o prompt.
-- Outro combinado nosso:
+O app abre e não fecha sozinho depois de 5 minutos de uso.
 
-**Como vamos garantir que todos entendem tudo** _(ex.: quem implementa apresenta o arquivo aos outros; revezar as partes; revisar o pull request do colega)_:
+A tela principal mostra dados reais das consultas cadastradas.
 
--
+A ação principal funciona e o resultado aparece na tela.
 
----
+Quando algo falha, aparece uma mensagem clara — o app não quebra.
 
-## 🗓️ Bloco 11 — Marcos até 10/12
+O app tem nome, ícone e cor próprios.
 
-| Marco | Prazo | Como se comprova no GitHub |
-|---|---|---|
-| M1 — Canvas preenchido + repositório criado | 16/09 | `CANVAS.md` no `main` |
-| M2 — PRD aprovado + telas rascunhadas | 30/09 | `PRD.md` + imagens em `docs/` |
-| M3 — Funcionalidade base rodando | 21/10 | tela principal lista dados + 1 ação + `try/catch` |
-| M4 — Dados completos (Room/Retrofit) e erros tratados | 11/11 | commits da camada de dados |
-| M5 — Identidade visual + `.apk` de release testado | 25/11 | ícone, cores, `.apk` testado por 2 pessoas de fora |
-| M6 — `.aab` + material de loja + `README.md` | 02/12 | pasta `loja/` + `README.md` completo |
-| **Entrega e apresentação** | **10/12** | tag `v1.0` no repositório |
+Duas pessoas de fora do grupo instalaram o .apk e conseguiram usar sem explicação.
 
----
+O README.md explica o que o app faz, com o que foi feito e como gerar o build.
 
-## 🏁 Bloco 12 — Definição de pronto
+O docs/USO_DE_IA.md e o AGENTS.md estão preenchidos.
 
-O grupo só considera o app pronto quando **todas** estas frases forem verdadeiras:
+Cada integrante consegue abrir o projeto e fazer uma mudança pequena sozinho — trocar um texto, acrescentar um campo, mudar a ordem da lista.
 
-- [ ] O app abre e não fecha sozinho depois de 5 minutos de uso.
-- [ ] A tela principal mostra dados reais (não texto de exemplo fixo no código).
-- [ ] A ação principal funciona e o resultado aparece na tela.
-- [ ] Quando algo falha, aparece uma mensagem clara — o app não quebra.
-- [ ] O app tem nome, ícone e cor próprios (nada de ícone padrão do Android).
-- [ ] Duas pessoas de fora do grupo instalaram o `.apk` e conseguiram usar sem explicação.
-- [ ] O `README.md` explica o que o app faz, com o que foi feito e como gerar o build.
-- [ ] O `docs/USO_DE_IA.md` e o `AGENTS.md` estão preenchidos.
-- [ ] **Cada integrante consegue abrir o projeto e fazer uma mudança pequena sozinho** — trocar um texto, acrescentar um campo, mudar a ordem da lista.
-- [ ] Todo arquivo nosso tem o comentário de fronteira escrito por nós.
+Todo arquivo nosso tem o comentário de fronteira escrito por nós.
 
----
+✍️ Validação do professor
 
-## ✍️ Validação do professor
+	
 
-| | |
-|---|---|
-| Data | |
-| Situação | ( ) Aprovado ( ) Aprovado com ajustes ( ) Refazer |
-| Observações | |
+Data	
+
+Situação	( ) Aprovado ( ) Aprovado com ajustes ( ) Refazer
+Observações
