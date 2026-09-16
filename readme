@@ -1,106 +1,92 @@
-# <Sorriso Marcado>
+<Sorriso Marcado>
 
-<img src="loja/icone-512.png" width="96" align="right" alt="Ícone do app">
+<img src="logo.png" width="96" align="right" alt="Ícone do app">
 
-O Sorriso Marcado ajuda pacientes a organizar e acompanhar suas consultas odontológicas de forma simples e prática.
+O Sorriso Marcado é um aplicativo desenvolvido para ajudar pacientes a organizar e acompanhar suas consultas odontológicas de forma simples e prática.
 
 Projeto final da disciplina de Desenvolvimento Mobile Android — 3º ano do Ensino Médio, IFPE Campus Palmares · 2026.
 
-## 📱 O que o app faz
+📱 O que o app faz
 
-<O Sorriso Marcado é um aplicativo de agenda odontológica desenvolvido para ajudar pacientes a organizarem suas consultas e compromissos com o dentista. A proposta é facilitar o acompanhamento das consultas, evitando esquecimentos e permitindo que o usuário tenha suas informações organizadas em um só lugar.
+O Sorriso Marcado é um aplicativo de agenda odontológica desenvolvido para ajudar pacientes a organizarem suas consultas e compromissos com o dentista. A proposta é facilitar o acompanhamento dos atendimentos, evitando esquecimentos e permitindo que o usuário tenha suas informações organizadas em um só lugar.
 
 Por meio do aplicativo, o usuário pode cadastrar suas consultas, visualizar os próximos atendimentos e consultar informações como data, horário, dentista e procedimento. Dessa forma, o paciente consegue acompanhar sua agenda odontológica de maneira rápida e prática.
 
-**Funcionalidades:**
+Funcionalidades:
 
 ✅ Cadastro de consultas odontológicas
 ✅ Visualização das consultas agendadas
-✅ Visualização dos detalhes de cada consulta
 ✅ Edição e exclusão de consultas
-✅ Organização das consultas por data e horário
-✅ Lembrete das próximas consultas
 
 Fora do escopo desta versão: atendimento odontológico online, diagnóstico de problemas bucais, prescrição de medicamentos e integração direta com clínicas ou profissionais. Essas funcionalidades ficaram fora do escopo por exigirem sistemas externos e recursos específicos.
 
 🖼️ Telas
-|Tela principal|  |Cadastro de consulta|
+Tela principal	Cadastro de consulta
 
 	
 
-| Item | Escolha |
-|---|---|
-| Linguagem | Kotlin |
-| Interface | Jetpack Compose / XML |
-| Persistência | Room / — |
-| Rede | Retrofit / — |
-| API consumida | <nome + link> |
-| `minSdk` / `targetSdk` | / |
-| Versão | 1.0 (versionCode 1) |
-
+Item	Escolha
+Linguagem	Kotlin
+Interface	Jetpack Compose
+Persistência	Room
+Rede	Não utilizada
+API consumida	Não utilizada
+minSdk / targetSdk	Conforme configuração do projeto
+Versão	1.0 (versionCode 1)
 
 Organização do código:
 
 app/src/main/java/br/edu/ifpe/sorrisomarcado/
-├── ui/     # telas
-├── data/   # Room
+├── ui/     # telas e componentes da interface
+├── data/   # banco de dados e persistência
 └── MainActivity.kt
 
-## ⚠️ Tratamento de erros
+⚠️ Tratamento de erros
+Situação	O que o app faz
+Sem internet	O aplicativo continua funcionando normalmente, pois os dados são armazenados localmente.
+Erro no servidor	Não se aplica, pois o aplicativo não utiliza servidor externo.
+Nenhum dado salvo	Exibe um estado vazio informando que não há consultas cadastradas.
+Campo obrigatório vazio	Exibe uma mensagem solicitando o preenchimento do campo.
 
-| Situação | O que o app faz |
-|---|---|
-| Sem internet | <mensagem exibida> |
-| Erro no servidor | <mensagem exibida> |
-| Nenhum dado salvo | <estado vazio explicado> |
-| Campo obrigatório vazio | <mensagem exibida> |
-
-## 🚀 Como rodar
-
-```bash
+🚀 Como rodar
 git clone https://github.com/<usuario>/<repo>.git
-```
+Abra a pasta do projeto no Android Studio.
+Aguarde o Gradle sync.
+Aguarde a sincronização e instalação das dependências do projeto.
+Rode o aplicativo em um emulador ou celular Android compatível.
 
-1. Abra a pasta no Android Studio (versão <___>)
-2. Aguarde o *Gradle sync*
-3. <Se usa API com chave:> crie o arquivo `local.properties` com `API_KEY=suachave`
-4. Rode em um emulador ou celular com Android <___> ou superior
-
-## 📦 Como gerar o build de release
-
-```
+📦 Como gerar o build de release
 Android Studio → Build → Generate Signed App Bundle / APK
-```
+Escolha APK (para testar) ou Android App Bundle (para a loja).
+Crie ou selecione a keystore — guarde a senha, pois ela é necessária para atualizar o aplicativo posteriormente.
+Selecione a Build variant: release.
+Gere o arquivo de saída em formato .apk ou .aab.
 
-1. Escolha **APK** (para testar) ou **Android App Bundle** (para a loja)
-2. Crie/selecione a *keystore* — guarde a senha, sem ela não dá para atualizar o app depois
-3. *Build variant*: **release**
-4. Saída: `app/release/app-release.apk` (ou `.aab`)
+Os arquivos prontos podem ser organizados na pasta loja/ e disponibilizados na release v1.0.
 
-Os arquivos prontos estão em [`loja/`](loja/) e na [release v1.0](../../releases).
+Testado em: dispositivos Android compatíveis com os requisitos definidos no projeto.
 
-**Testado em:** <modelo do aparelho — Android X> e <modelo do aparelho — Android Y>
+📚 Documentação do projeto
+Canvas do Projeto
+PRD — requisitos
+Registro de uso de IA
+Material da loja
+👥 Equipe
+Nome	Responsável por	GitHub
+Lara Emanuelle	telas	
 
-## 📚 Documentação do projeto
+Hiarlley Francisco	dados	
 
-- [Canvas do Projeto](CANVAS.md)
-- [PRD — requisitos](PRD.md)
-- [Registro de uso de IA](docs/USO_DE_IA.md)
-- [Material da loja](loja/)
+Marina Calado	design	
 
-## 👥 Equipe
+Lara, Hiarlley e Marina	documentação e build	
 
-| Nome | Responsável por | GitHub |
-|---|---|---|
-| | telas | [@usuario](https://github.com/usuario) |
-| | dados | |
-| | design | |
-| | documentação e build | |
+🤖 Uso de IA
 
-## 🤖 Uso de IA
+Este projeto utilizou ferramentas de Inteligência Artificial como apoio durante o processo de desenvolvimento. A IA foi utilizada como recurso auxiliar para pesquisas, esclarecimento de dúvidas, desenvolvimento e revisão de partes do projeto.
 
-Este projeto usou ferramentas de IA como apoio ao desenvolvimento. O registro está em [`docs/USO_DE_IA.md`](docs/USO_DE_IA.md). Todo o código entregue é compreendido e pode ser explicado pelos integrantes.
+O registro detalhado do uso de IA está disponível em docs/USO_DE_IA.md. Todo o código entregue é compreendido e pode ser explicado pelos integrantes da equipe.
 
-## 📄 Licença
+📄 Licença
 
-Projeto acadêmico, uso educacional.
+Projeto acadêmico, destinado ao uso educacional.
