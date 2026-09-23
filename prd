@@ -1,0 +1,521 @@
+# PRD — Sorriso Marcado
+
+## 1. Informações do Projeto
+
+**Nome do produto:** Sorriso Marcado
+**Tipo:** Aplicativo mobile Android
+**Versão:** 1.0
+**Plataforma:** Android
+**Instituição:** IFPE — Campus Palmares
+**Turma:** 3º ano do Ensino Médio
+**Disciplina:** Desenvolvimento Mobile Android
+**Data:** 2026
+**Entrega final:** 10/12/2026
+
+### Equipe
+
+| Integrante              | Responsabilidade principal             |
+| ----------------------- | -------------------------------------- |
+| Lara Emanuelle          | Desenvolvimento das telas e interface  |
+| Hiarlley Francisco      | Banco de dados e persistência com Room |
+| Marina Calado           | Design e identidade visual             |
+| Lara, Hiarlley e Marina | Documentação e build                   |
+
+---
+
+# 2. Visão Geral do Produto
+
+O **Sorriso Marcado** é um aplicativo Android desenvolvido para ajudar pacientes a organizar e acompanhar suas consultas odontológicas de maneira simples e prática.
+
+O aplicativo permite que o usuário cadastre suas consultas e tenha acesso às principais informações dos atendimentos em um único lugar, reduzindo a necessidade de utilizar anotações em papel, mensagens ou diferentes aplicativos para controlar seus compromissos.
+
+A proposta é oferecer uma solução simples de agenda odontológica, com armazenamento local dos dados e uma interface acessível ao usuário.
+
+---
+
+# 3. Problema
+
+Pacientes podem esquecer datas e horários de consultas odontológicas ou ter dificuldade para encontrar informações relacionadas ao atendimento.
+
+Atualmente, essas informações podem ser registradas de diferentes formas, como:
+
+* Anotações no celular;
+* Agenda física;
+* Papel;
+* Mensagens;
+* Outros aplicativos de organização.
+
+Essa dispersão pode dificultar o acompanhamento dos compromissos odontológicos.
+
+---
+
+# 4. Objetivo do Produto
+
+O objetivo do Sorriso Marcado é fornecer uma ferramenta simples para que o paciente possa:
+
+* Cadastrar suas consultas odontológicas;
+* Visualizar suas consultas agendadas;
+* Consultar informações importantes dos atendimentos;
+* Editar informações de consultas;
+* Excluir consultas que não sejam mais necessárias.
+
+O aplicativo deverá manter essas informações organizadas em um único local e permitir o acesso aos dados mesmo sem conexão com a internet.
+
+---
+
+# 5. Público-Alvo
+
+## Público principal
+
+Pacientes que realizam consultas odontológicas e precisam organizar seus compromissos.
+
+## Perfil de uso
+
+O aplicativo poderá ser utilizado principalmente:
+
+* Antes de uma consulta, para verificar data e horário;
+* Depois do agendamento, para registrar as informações;
+* Ao longo do período entre consultas, para consultar os próximos atendimentos;
+* Quando for necessário alterar ou remover uma consulta.
+
+## Usuários que podem testar o aplicativo
+
+* Pacientes odontológicos;
+* Profissionais cirurgiões-dentistas.
+
+O foco principal da versão atual, entretanto, é a organização das consultas pelo paciente.
+
+---
+
+# 6. Proposta de Valor
+
+O Sorriso Marcado centraliza as informações das consultas odontológicas em uma única aplicação.
+
+A principal proposta é permitir que o usuário organize seus compromissos odontológicos de maneira rápida, simples e offline, sem depender de papel, mensagens ou conexão com servidores externos.
+
+---
+
+# 7. Escopo do MVP
+
+O MVP (Minimum Viable Product) será composto pelas funcionalidades essenciais para o funcionamento da agenda odontológica.
+
+## F1 — Cadastro de consultas
+
+O usuário deverá conseguir cadastrar uma nova consulta odontológica.
+
+As informações cadastradas deverão incluir os dados necessários para identificar e organizar o atendimento, como:
+
+* Data;
+* Horário;
+* Dentista;
+* Procedimento.
+
+Após o cadastro, a consulta deverá ser armazenada localmente.
+
+---
+
+## F2 — Visualização das consultas
+
+O usuário deverá conseguir visualizar as consultas cadastradas na tela principal.
+
+A listagem deverá apresentar informações relevantes, como:
+
+* Data;
+* Horário;
+* Dentista;
+* Procedimento.
+
+Quando não houver consultas cadastradas, o aplicativo deverá apresentar um estado vazio informando ao usuário que ainda não existem consultas registradas.
+
+---
+
+## F3 — Edição de consultas
+
+O usuário deverá conseguir alterar os dados de uma consulta previamente cadastrada.
+
+A alteração deverá atualizar os dados armazenados no banco de dados local.
+
+---
+
+## F4 — Exclusão de consultas
+
+O usuário deverá conseguir excluir uma consulta cadastrada.
+
+Após a exclusão, a consulta não deverá continuar aparecendo na lista principal.
+
+---
+
+# 8. Fluxo Principal do Usuário
+
+O fluxo principal do aplicativo será:
+
+1. O usuário abre o aplicativo;
+2. O aplicativo apresenta a tela principal;
+3. O usuário visualiza as consultas cadastradas;
+4. O usuário seleciona a opção de cadastrar uma nova consulta;
+5. O usuário informa os dados da consulta;
+6. O aplicativo valida os campos obrigatórios;
+7. Os dados são armazenados localmente;
+8. A nova consulta aparece na tela principal;
+9. O usuário pode posteriormente editar ou excluir a consulta.
+
+---
+
+# 9. Telas do Aplicativo
+
+## 9.1 Tela Principal
+
+Responsável por apresentar as consultas cadastradas.
+
+Deverá conter:
+
+* Identidade visual do Sorriso Marcado;
+* Lista de consultas;
+* Informações principais de cada consulta;
+* Acesso à criação de uma nova consulta;
+* Opções para editar ou excluir consultas.
+
+Quando não houver registros, deverá apresentar uma mensagem indicando que nenhuma consulta foi cadastrada.
+
+---
+
+## 9.2 Tela de Cadastro
+
+Responsável pelo cadastro de uma nova consulta.
+
+Deverá permitir o preenchimento das informações necessárias para registrar o atendimento.
+
+Campos principais:
+
+* Data;
+* Horário;
+* Dentista;
+* Procedimento.
+
+Deverá existir uma ação para salvar a consulta.
+
+---
+
+## 9.3 Tela/Formulário de Edição
+
+Responsável pela alteração de uma consulta já existente.
+
+O formulário deverá carregar os dados atuais da consulta e permitir que o usuário faça as alterações necessárias.
+
+---
+
+# 10. Requisitos Funcionais
+
+### RF01 — Cadastrar consulta
+
+O sistema deve permitir que o usuário cadastre uma consulta odontológica.
+
+### RF02 — Validar campos obrigatórios
+
+O sistema deve verificar se os campos obrigatórios foram preenchidos antes de salvar uma consulta.
+
+### RF03 — Armazenar consulta
+
+O sistema deve armazenar os dados da consulta no banco de dados local.
+
+### RF04 — Listar consultas
+
+O sistema deve apresentar as consultas cadastradas na tela principal.
+
+### RF05 — Editar consulta
+
+O sistema deve permitir a alteração dos dados de uma consulta existente.
+
+### RF06 — Excluir consulta
+
+O sistema deve permitir a exclusão de uma consulta existente.
+
+### RF07 — Atualizar a interface
+
+Após cadastrar, editar ou excluir uma consulta, a lista apresentada ao usuário deve refletir os dados atualizados.
+
+### RF08 — Funcionar offline
+
+O sistema deve permitir o uso das funcionalidades principais sem conexão com a internet.
+
+---
+
+# 11. Requisitos Não Funcionais
+
+### RNF01 — Plataforma
+
+O aplicativo deve ser desenvolvido para dispositivos Android.
+
+### RNF02 — Linguagem
+
+O projeto deve utilizar Kotlin.
+
+### RNF03 — Interface
+
+A interface deve utilizar Jetpack Compose.
+
+### RNF04 — Persistência
+
+Os dados devem ser armazenados localmente utilizando Room.
+
+### RNF05 — Conectividade
+
+O aplicativo não deve depender de conexão com a internet para executar suas funcionalidades principais.
+
+### RNF06 — Usabilidade
+
+As telas devem apresentar informações de maneira clara e permitir que o usuário compreenda as ações disponíveis.
+
+### RNF07 — Tratamento de erros
+
+Erros durante operações de salvamento, edição ou exclusão devem ser tratados sem causar o encerramento inesperado do aplicativo.
+
+### RNF08 — Identidade visual
+
+O aplicativo deve utilizar nome, ícone e identidade visual próprios.
+
+---
+
+# 12. Banco de Dados e Persistência
+
+O armazenamento das consultas será realizado localmente utilizando a biblioteca **Room**.
+
+A estrutura de dados deverá permitir armazenar as informações necessárias para uma consulta odontológica.
+
+### Dados principais
+
+| Campo        | Descrição                 |
+| ------------ | ------------------------- |
+| ID           | Identificador da consulta |
+| Data         | Data do atendimento       |
+| Horário      | Horário do atendimento    |
+| Dentista     | Nome do dentista          |
+| Procedimento | Procedimento odontológico |
+
+A utilização do Room permite que as consultas continuem disponíveis mesmo quando o dispositivo estiver sem conexão com a internet.
+
+---
+
+# 13. Tratamento de Erros
+
+O aplicativo deverá apresentar mensagens claras quando uma operação não puder ser concluída.
+
+### Campo obrigatório vazio
+
+Quando o usuário tentar salvar uma consulta sem preencher um campo obrigatório, o aplicativo deverá informar que o preenchimento é necessário.
+
+### Erro ao salvar
+
+Caso ocorra um problema durante o armazenamento da consulta, o aplicativo deverá informar que não foi possível realizar a operação e orientar o usuário a tentar novamente.
+
+### Erro ao editar
+
+Caso ocorra uma falha durante a edição, o usuário deverá receber uma mensagem informando que a alteração não pôde ser realizada.
+
+### Erro ao excluir
+
+Caso ocorra uma falha durante a exclusão, o aplicativo deverá informar que a operação não foi concluída.
+
+### Nenhuma consulta cadastrada
+
+Quando não houver consultas, o aplicativo deverá apresentar uma mensagem de estado vazio em vez de uma lista sem explicação.
+
+---
+
+# 14. Identidade Visual
+
+O nome exibido no aplicativo será:
+
+**Sorriso Marcado**
+
+### Cor principal
+
+**#E86A92**
+
+### Conceito do ícone
+
+O ícone deverá representar um **tubarão menina fofinho usando roupa de dentista e segurando um calendário relacionado a uma consulta odontológica**.
+
+A identidade visual deverá transmitir uma proposta amigável e relacionada à organização de consultas odontológicas.
+
+---
+
+# 15. Tecnologias
+
+| Tecnologia      | Utilização                        |
+| --------------- | --------------------------------- |
+| Kotlin          | Linguagem principal               |
+| Jetpack Compose | Desenvolvimento da interface      |
+| Room            | Banco de dados local              |
+| AndroidX        | Bibliotecas e componentes Android |
+| Android Studio  | Ambiente de desenvolvimento       |
+| Git/GitHub      | Controle de versão e colaboração  |
+
+Não será utilizada API externa ou servidor na versão atual do aplicativo.
+
+---
+
+# 16. Arquitetura e Organização do Projeto
+
+A organização principal do código seguirá a estrutura:
+
+```text
+app/src/main/java/br/edu/ifpe/sorrisomarcado/
+
+├── ui/
+│   └── Telas e componentes da interface
+
+├── data/
+│   └── Banco de dados e persistência
+
+└── MainActivity.kt
+```
+
+A camada `ui` será responsável pela interface e pelos componentes visuais.
+
+A camada `data` será responsável pelo armazenamento e gerenciamento dos dados das consultas.
+
+---
+
+# 17. Fora do Escopo
+
+As seguintes funcionalidades não fazem parte da versão 1.0:
+
+* Atendimento odontológico online;
+* Diagnóstico de problemas bucais;
+* Prescrição de medicamentos;
+* Integração direta com clínicas;
+* Integração direta com profissionais;
+* Sistema de comunicação com dentistas;
+* Servidor externo;
+* API externa;
+* Atendimento médico ou odontológico por meio do aplicativo.
+
+Essas funcionalidades ficam fora do escopo porque exigiriam recursos, integrações e estruturas adicionais.
+
+---
+
+# 18. Uso de Inteligência Artificial
+
+A Inteligência Artificial poderá ser utilizada como ferramenta de apoio durante o desenvolvimento.
+
+Entre os usos permitidos estão:
+
+* Pesquisa;
+* Esclarecimento de dúvidas;
+* Auxílio na implementação;
+* Revisão de código;
+* Identificação de possíveis erros;
+* Sugestões de melhorias.
+
+A IA não deverá substituir o conhecimento dos integrantes.
+
+Todo código produzido ou alterado com auxílio de IA deverá ser compreendido pelos integrantes responsáveis.
+
+### Regras
+
+1. A IA deve seguir a estrutura e os padrões definidos pelo grupo.
+2. Nenhum código deverá ser aceito sem que os integrantes compreendam seu funcionamento.
+3. A IA deve ser utilizada como apoio, e não como substituição do conhecimento da equipe.
+4. Nenhum integrante deverá aceitar alterações automaticamente sem revisar o conteúdo.
+5. Senhas ou chaves de API não deverão ser inseridas em prompts.
+6. Os integrantes deverão conseguir explicar as principais partes do projeto.
+
+---
+
+# 19. Riscos do Projeto
+
+| Risco                                         | Plano de contingência                                      |
+| --------------------------------------------- | ---------------------------------------------------------- |
+| Problemas na implementação do Room            | Simplificar a estrutura do banco e revisar a implementação |
+| Atraso no desenvolvimento das telas           | Priorizar as funcionalidades principais do MVP             |
+| Erros durante operações de dados              | Implementar tratamento de exceções e mensagens ao usuário  |
+| Dificuldade de integração entre telas e dados | Revisar a comunicação entre as camadas `ui` e `data`       |
+| Problemas durante o build                     | Revisar dependências e configuração do Gradle              |
+
+---
+
+# 20. Critérios de Aceitação
+
+Uma funcionalidade será considerada concluída quando:
+
+* A consulta puder ser cadastrada;
+* Os dados forem armazenados corretamente;
+* A consulta aparecer na tela principal;
+* Uma consulta existente puder ser editada;
+* Uma consulta puder ser excluída;
+* Os dados permanecerem disponíveis sem internet;
+* Campos obrigatórios forem validados;
+* Erros não encerrarem inesperadamente o aplicativo;
+* Mensagens claras forem apresentadas ao usuário quando necessário.
+
+---
+
+# 21. Definição de Pronto
+
+O projeto será considerado pronto quando:
+
+* O aplicativo abrir e permanecer funcionando durante o uso;
+* A tela principal apresentar dados reais das consultas cadastradas;
+* O cadastro de consultas funcionar corretamente;
+* A edição de consultas funcionar corretamente;
+* A exclusão de consultas funcionar corretamente;
+* O aplicativo apresentar mensagens claras quando ocorrerem erros;
+* O aplicativo possuir nome, ícone e identidade visual próprios;
+* O APK tiver sido instalado e testado por pessoas externas à equipe;
+* O README explicar o funcionamento do aplicativo;
+* A documentação de uso de IA estiver preenchida;
+* O AGENTS.md estiver preenchido;
+* Todos os integrantes conseguirem compreender e explicar as principais partes do projeto.
+
+---
+
+# 22. Cronograma
+
+| Marco                                 | Prazo      | Critério                                        |
+| ------------------------------------- | ---------- | ----------------------------------------------- |
+| M1 — Canvas preenchido + repositório  | 16/09/2026 | CANVAS.md no GitHub                             |
+| M2 — PRD aprovado + telas rascunhadas | 30/09/2026 | PRD.md + imagens em docs/                       |
+| M3 — Funcionalidade base              | 21/10/2026 | Tela principal + cadastro + tratamento de erros |
+| M4 — Dados completos                  | 11/11/2026 | Camada Room implementada                        |
+| M5 — Identidade visual + APK          | 25/11/2026 | Ícone, cores e APK testado                      |
+| M6 — AAB + material de loja + README  | 02/12/2026 | Pasta `loja/` + documentação                    |
+| Entrega final                         | 10/12/2026 | Tag `v1.0` no repositório                       |
+
+---
+
+# 23. Métricas de Sucesso
+
+O projeto será considerado bem-sucedido quando o usuário conseguir realizar o fluxo principal sem necessidade de auxílio externo:
+
+**Abrir aplicativo → cadastrar consulta → visualizar consulta → editar consulta → excluir consulta.**
+
+Também será considerado importante que:
+
+* As informações sejam mantidas corretamente;
+* O aplicativo funcione offline;
+* As operações principais sejam compreensíveis;
+* O aplicativo não apresente encerramentos inesperados;
+* Usuários externos consigam instalar e utilizar o APK.
+
+---
+
+# 24. Resultado Esperado
+
+Ao final do desenvolvimento, o Sorriso Marcado deverá ser um aplicativo Android funcional capaz de organizar consultas odontológicas de maneira simples, mantendo os dados armazenados localmente no dispositivo.
+
+A versão 1.0 deverá concentrar-se nas quatro funcionalidades principais:
+
+**Cadastrar → Visualizar → Editar → Excluir.**
+
+O produto deverá possuir interface própria, identidade visual definida, armazenamento local com Room, tratamento de erros e documentação suficiente para que os integrantes consigam explicar o funcionamento do projeto.
+
+---
+
+## 25. Referências do Projeto
+
+* Repositório: `https://github.com/lesalara123/Sorriso-Marcado`
+* Canvas do Projeto: `CANVAS.md`
+* README: `README.md`
+* Registro de uso de IA: `docs/USO_DE_IA.md`
+* Material de loja: pasta `loja/`
