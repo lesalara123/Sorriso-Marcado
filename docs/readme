@@ -1,92 +1,151 @@
-<Sorriso Marcado>
+# 🦷 Sorriso Marcado
 
-<img src="logo.png" width="96" align="right" alt="Ícone do app">
+Material de apresentação e documentação do projeto final de **Desenvolvimento Mobile Android**.
 
-O Sorriso Marcado é um aplicativo desenvolvido para ajudar pacientes a organizar e acompanhar suas consultas odontológicas de forma simples e prática.
+**Turma:** 3º ano do Ensino Médio · **Instituição:** IFPE — Campus Palmares · **Entrega:** 10/12/2026
 
-Projeto final da disciplina de Desenvolvimento Mobile Android — 3º ano do Ensino Médio, IFPE Campus Palmares · 2026.
+O **Sorriso Marcado** é um aplicativo Android desenvolvido para ajudar pacientes a organizar e acompanhar suas consultas odontológicas de forma simples e prática.
 
-📱 O que o app faz
+---
 
-O Sorriso Marcado é um aplicativo de agenda odontológica desenvolvido para ajudar pacientes a organizarem suas consultas e compromissos com o dentista. A proposta é facilitar o acompanhamento dos atendimentos, evitando esquecimentos e permitindo que o usuário tenha suas informações organizadas em um só lugar.
+## O que tem aqui
 
-Por meio do aplicativo, o usuário pode cadastrar suas consultas, visualizar os próximos atendimentos e consultar informações como data, horário, dentista e procedimento. Dessa forma, o paciente consegue acompanhar sua agenda odontológica de maneira rápida e prática.
+| Arquivo                                          | Para quê                                                               | Quando            |
+| ------------------------------------------------ | ---------------------------------------------------------------------- | ----------------- |
+| [`CANVAS.md`](CANVAS.md)                         | Apresentação da ideia, público-alvo, problema e proposta do aplicativo | M1                |
+| [`PRD.md`](PRD.md)                               | Documento de requisitos, funcionalidades e objetivos do projeto        | M2                |
+| [`RUBRICA.md`](RUBRICA.md)                       | Critérios de avaliação do projeto, conforme o material da disciplina   | Consulta contínua |
+| [`docs/USO_DE_IA.md`](docs/USO_DE_IA.md)         | Registro do uso de Inteligência Artificial durante o desenvolvimento   | Contínuo          |
+| [`docs/AGENTS_MODELO.md`](docs/AGENTS_MODELO.md) | Modelo de orientações para o uso de IA no projeto                      | M1                |
+| [`docs/GUIA_GITHUB.md`](docs/GUIA_GITHUB.md)     | Orientações sobre repositório, commits e organização do código         | M1 em diante      |
+| [`docs/README_MODELO.md`](docs/README_MODELO.md) | Modelo de documentação para o aplicativo                               | M6                |
 
-Funcionalidades:
+---
 
-✅ Cadastro de consultas odontológicas
-✅ Visualização das consultas agendadas
-✅ Edição e exclusão de consultas
+## Sobre o aplicativo
 
-Fora do escopo desta versão: atendimento odontológico online, diagnóstico de problemas bucais, prescrição de medicamentos e integração direta com clínicas ou profissionais. Essas funcionalidades ficaram fora do escopo por exigirem sistemas externos e recursos específicos.
+O Sorriso Marcado tem como objetivo facilitar a organização das consultas odontológicas, reunindo as principais informações dos atendimentos em um único lugar.
 
-🖼️ Telas
-Tela principal	Cadastro de consulta
+### Funcionalidades principais
 
-	
+* Cadastro de consultas odontológicas;
+* Visualização das consultas cadastradas;
+* Edição das informações de uma consulta;
+* Exclusão de consultas;
+* Armazenamento local dos dados;
+* Funcionamento das principais funcionalidades sem conexão com a internet.
 
-Item	Escolha
-Linguagem	Kotlin
-Interface	Jetpack Compose
-Persistência	Room
-Rede	Não utilizada
-API consumida	Não utilizada
-minSdk / targetSdk	Conforme configuração do projeto
-Versão	1.0 (versionCode 1)
+As informações registradas incluem data, horário, dentista e procedimento.
 
-Organização do código:
+### Fora do escopo
 
+A versão 1.0 não contempla atendimento odontológico online, diagnóstico de problemas bucais, prescrição de medicamentos, integração direta com clínicas ou profissionais, servidores externos ou APIs externas.
+
+---
+
+## Como o projeto está sendo desenvolvido
+
+O desenvolvimento do Sorriso Marcado é realizado de forma colaborativa pelos três integrantes da equipe. Todos participam das etapas de planejamento, programação, criação e ajustes das telas, banco de dados, identidade visual, testes, documentação e geração do aplicativo.
+
+O projeto utiliza Kotlin, Jetpack Compose e Room para desenvolver uma aplicação Android com armazenamento local.
+
+O processo de desenvolvimento envolve:
+
+1. Planejamento da proposta e definição do público-alvo.
+2. Organização dos requisitos e funcionalidades no `PRD.md`.
+3. Criação e desenvolvimento das telas do aplicativo.
+4. Implementação do cadastro, visualização, edição e exclusão de consultas.
+5. Implementação do armazenamento local com Room.
+6. Tratamento de erros e validação dos campos obrigatórios.
+7. Testes das funcionalidades e ajustes da interface.
+8. Preparação da documentação e do build final.
+
+---
+
+## Marcos
+
+| Marco     | Prazo          | Entrega                                       |
+| --------- | -------------- | --------------------------------------------- |
+| M1        | 16/09/2026     | Repositório e `CANVAS.md` preenchido          |
+| M2        | 30/09/2026     | `PRD.md` e rascunho das telas                 |
+| M3        | 21/10/2026     | Funcionalidades básicas e tratamento de erros |
+| M4        | 11/11/2026     | Persistência de dados com Room                |
+| M5        | 25/11/2026     | Identidade visual e APK testado               |
+| M6        | 02/12/2026     | AAB, material de loja e documentação          |
+| **Final** | **10/12/2026** | **Versão 1.0 e apresentação do projeto**      |
+
+---
+
+## Os três princípios
+
+1. **Simplicidade e qualidade.** O aplicativo prioriza funcionalidades essenciais, uma interface clara e um funcionamento estável.
+2. **Organização antes da implementação.** Os requisitos e o escopo são definidos antes da implementação das funcionalidades.
+3. **Desenvolvimento colaborativo e compreensão.** Todos os integrantes participam do projeto e devem compreender as principais partes do código, incluindo as alterações realizadas com auxílio de Inteligência Artificial.
+
+---
+
+## Tecnologias utilizadas
+
+| Item               | Escolha         |
+| ------------------ | --------------- |
+| Linguagem          | Kotlin          |
+| Interface          | Jetpack Compose |
+| Persistência       | Room            |
+| Plataforma         | Android         |
+| Rede               | Não utilizada   |
+| API externa        | Não utilizada   |
+| Controle de versão | Git e GitHub    |
+| Versão             | 1.0             |
+
+### Organização do código
+
+```text
 app/src/main/java/br/edu/ifpe/sorrisomarcado/
 ├── ui/     # telas e componentes da interface
 ├── data/   # banco de dados e persistência
 └── MainActivity.kt
+```
 
-⚠️ Tratamento de erros
-Situação	O que o app faz
-Sem internet	O aplicativo continua funcionando normalmente, pois os dados são armazenados localmente.
-Erro no servidor	Não se aplica, pois o aplicativo não utiliza servidor externo.
-Nenhum dado salvo	Exibe um estado vazio informando que não há consultas cadastradas.
-Campo obrigatório vazio	Exibe uma mensagem solicitando o preenchimento do campo.
+---
 
-🚀 Como rodar
-git clone https://github.com/<usuario>/<repo>.git
-Abra a pasta do projeto no Android Studio.
-Aguarde o Gradle sync.
-Aguarde a sincronização e instalação das dependências do projeto.
-Rode o aplicativo em um emulador ou celular Android compatível.
+## Nota sobre o desenvolvimento e a avaliação
 
-📦 Como gerar o build de release
-Android Studio → Build → Generate Signed App Bundle / APK
-Escolha APK (para testar) ou Android App Bundle (para a loja).
-Crie ou selecione a keystore — guarde a senha, pois ela é necessária para atualizar o aplicativo posteriormente.
-Selecione a Build variant: release.
-Gere o arquivo de saída em formato .apk ou .aab.
+O Sorriso Marcado é um projeto acadêmico desenvolvido para a disciplina de Desenvolvimento Mobile Android.
 
-Os arquivos prontos podem ser organizados na pasta loja/ e disponibilizados na release v1.0.
+Além de implementar as funcionalidades propostas, a equipe busca garantir que o aplicativo seja compreensível, organizado e funcional. Todos os integrantes devem conseguir explicar as principais partes do código, as decisões tomadas durante o desenvolvimento e o funcionamento das funcionalidades implementadas.
 
-Testado em: dispositivos Android compatíveis com os requisitos definidos no projeto.
+A avaliação deverá seguir os critérios definidos pelo professor e pelo material oficial da disciplina.
 
-📚 Documentação do projeto
-Canvas do Projeto
-PRD — requisitos
-Registro de uso de IA
-Material da loja
-👥 Equipe
-Nome	Responsável por	GitHub
-Lara Emanuelle	telas	
+---
 
-Hiarlley Francisco	dados	
+## 👥 Equipe
 
-Marina Calado	design	
+O projeto é desenvolvido de forma colaborativa pelos três integrantes:
 
-Lara, Hiarlley e Marina	documentação e build	
+* **Lara Emanuelle**
+* **Hiarlley Francisco**
+* **Marina Calado**
 
-🤖 Uso de IA
+Todos participam conjuntamente do planejamento, desenvolvimento, testes, identidade visual, documentação e build do aplicativo.
 
-Este projeto utilizou ferramentas de Inteligência Artificial como apoio durante o processo de desenvolvimento. A IA foi utilizada como recurso auxiliar para pesquisas, esclarecimento de dúvidas, desenvolvimento e revisão de partes do projeto.
+---
 
-O registro detalhado do uso de IA está disponível em docs/USO_DE_IA.md. Todo o código entregue é compreendido e pode ser explicado pelos integrantes da equipe.
+## 🤖 Uso de Inteligência Artificial
 
-📄 Licença
+As ferramentas de Inteligência Artificial podem ser utilizadas como apoio para pesquisas, esclarecimento de dúvidas, implementação, revisão de código, identificação de erros e sugestões de melhorias.
 
-Projeto acadêmico, destinado ao uso educacional.
+As alterações sugeridas por IA devem ser revisadas e compreendidas pelos integrantes antes de serem incorporadas ao projeto.
+
+O registro detalhado do uso de Inteligência Artificial está disponível em [`docs/USO_DE_IA.md`](docs/USO_DE_IA.md).
+
+---
+
+## 📚 Repositório
+
+[GitHub — Sorriso Marcado](https://github.com/lesalara123/Sorriso-Marcado)
+
+---
+
+## 📄 Licença
+
+Projeto acadêmico destinado ao uso educacional, desenvolvido no IFPE — Campus Palmares, durante a disciplina de Desenvolvimento Mobile Android, em 2026.
