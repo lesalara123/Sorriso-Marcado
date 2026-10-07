@@ -9,7 +9,7 @@ O **Sorriso Marcado** é um aplicativo Android desenvolvido para ajudar paciente
 
 ---
 
-## O que tem aqui
+## O que tem aqui:
 
 | Arquivo                                          | Para quê                                                               | Quando            |
 | ------------------------------------------------ | ---------------------------------------------------------------------- | ----------------- |
@@ -23,11 +23,11 @@ O **Sorriso Marcado** é um aplicativo Android desenvolvido para ajudar paciente
 
 ---
 
-## Sobre o aplicativo
+## Sobre o aplicativo:
 
 O Sorriso Marcado tem como objetivo facilitar a organização das consultas odontológicas, reunindo as principais informações dos atendimentos em um único lugar.
 
-### Funcionalidades principais
+### Funcionalidades principais:
 
 * Cadastro de consultas odontológicas;
 * Visualização das consultas cadastradas;
@@ -38,13 +38,13 @@ O Sorriso Marcado tem como objetivo facilitar a organização das consultas odon
 
 As informações registradas incluem data, horário, dentista e procedimento.
 
-### Fora do escopo
+### Fora do escopo:
 
 A versão 1.0 não contempla atendimento odontológico online, diagnóstico de problemas bucais, prescrição de medicamentos, integração direta com clínicas ou profissionais, servidores externos ou APIs externas.
 
 ---
 
-## Como o projeto está sendo desenvolvido
+## Como o projeto está sendo desenvolvido:
 
 O desenvolvimento do Sorriso Marcado é realizado de forma colaborativa pelos três integrantes da equipe. Todos participam das etapas de planejamento, programação, criação e ajustes das telas, banco de dados, identidade visual, testes, documentação e geração do aplicativo.
 
@@ -63,7 +63,7 @@ O processo de desenvolvimento envolve:
 
 ---
 
-## Marcos
+## Marcos:
 
 | Marco     | Prazo          | Entrega                                       |
 | --------- | -------------- | --------------------------------------------- |
@@ -77,7 +77,7 @@ O processo de desenvolvimento envolve:
 
 ---
 
-## Os três princípios
+## Os três princípios:
 
 1. **Simplicidade e qualidade.** O aplicativo prioriza funcionalidades essenciais, uma interface clara e um funcionamento estável.
 2. **Organização antes da implementação.** Os requisitos e o escopo são definidos antes da implementação das funcionalidades.
@@ -85,7 +85,7 @@ O processo de desenvolvimento envolve:
 
 ---
 
-## Tecnologias utilizadas
+## Tecnologias utilizadas:
 
 | Item               | Escolha         |
 | ------------------ | --------------- |
@@ -98,7 +98,7 @@ O processo de desenvolvimento envolve:
 | Controle de versão | Git e GitHub    |
 | Versão             | 1.0             |
 
-### Organização do código
+### Organização do código:
 
 ```text
 app/src/main/java/br/edu/ifpe/sorrisomarcado/
@@ -109,7 +109,7 @@ app/src/main/java/br/edu/ifpe/sorrisomarcado/
 
 ---
 
-## Nota sobre o desenvolvimento e a avaliação
+## Nota sobre o desenvolvimento e a avaliação:
 
 O Sorriso Marcado é um projeto acadêmico desenvolvido para a disciplina de Desenvolvimento Mobile Android.
 
@@ -119,7 +119,7 @@ A avaliação deverá seguir os critérios definidos pelo professor e pelo mater
 
 ---
 
-## 👥 Equipe
+## 👥 Equipe:
 
 O projeto é desenvolvido de forma colaborativa pelos três integrantes:
 
@@ -131,7 +131,7 @@ Todos participam conjuntamente do planejamento, desenvolvimento, testes, identid
 
 ---
 
-## 🤖 Uso de Inteligência Artificial
+## 🤖 Uso de Inteligência Artificial:
 
 As ferramentas de Inteligência Artificial podem ser utilizadas como apoio para pesquisas, esclarecimento de dúvidas, implementação, revisão de código, identificação de erros e sugestões de melhorias.
 
@@ -141,7 +141,7 @@ O registro detalhado do uso de Inteligência Artificial está disponível em [`d
 
 ---
 
-## 📚 Repositório
+## 📚 Repositório:
 
 [GitHub — Sorriso Marcado](https://github.com/lesalara123/Sorriso-Marcado)
 
