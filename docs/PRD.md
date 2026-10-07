@@ -252,7 +252,7 @@ Preencher com o modelo dos celulares utilizados pelo grupo e a versão do Androi
 | M3 — Funcionalidade base             | 21/10/2026     | Grupo              | Em andamento |
 | M4 — Dados completos                 | 11/11/2026     | Hiarlley Francisco | Pendente     |
 | M5 — Identidade visual + APK         | 25/11/2026     | Marina Calado      | Pendente     |
-| M6 — AAB + material de loja + README | 02/12/2026     | Grupo              | Pendente     |
+| M6 — AAB + material de loja + README | 02/12/2026     | Lara Emanuelle     | Pendente     |
 | **Entrega e apresentação**           | **10/12/2026** | **Grupo**          | **Pendente** |
 
 ---
