@@ -11,7 +11,7 @@
 
 ---
 
-## 1. Visão do produto
+## 1. Visão do produto:
 
 **Pitch:**
 O Sorriso Marcado é um aplicativo Android desenvolvido para ajudar pacientes a organizar e acompanhar suas consultas odontológicas de maneira simples e prática.
@@ -24,7 +24,7 @@ O Sorriso Marcado centraliza as informações das consultas odontológicas em um
 
 ---
 
-## 2. Público e cenário de uso
+## 2. Público e cenário de uso:
 
 **Usuário-alvo:**
 
@@ -36,7 +36,7 @@ Pacientes que realizam consultas odontológicas e precisam organizar seus compro
 
 ---
 
-##3. **Objetivos e não-objetivos**
+##3. **Objetivos e não-objetivos:**
 
 Objetivos desta versão (v1.0):
 
@@ -59,7 +59,7 @@ Manter os dados organizados e disponíveis localmente, sem depender de conexão 
 
 ---
 
-## 4. Requisitos funcionais
+## 4. Requisitos funcionais:
 
 | ID   | História de usuário                                                                                                              | Critério de aceite                                                                                                      | Prioridade |
 | ---- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------- |
@@ -74,7 +74,7 @@ Manter os dados organizados e disponíveis localmente, sem depender de conexão 
 
 ---
 
-## 5. Requisitos não funcionais
+## 5. Requisitos não funcionais:
 
 | ID    | Requisito                                                                                                               | Como será verificado                               |
 | ----- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
@@ -89,7 +89,7 @@ Manter os dados organizados e disponíveis localmente, sem depender de conexão 
 
 ---
 
-## 6. Telas e navegação
+## 6. Telas e navegação:
 
 **Mapa de navegação:**
 
@@ -121,7 +121,7 @@ Quando não houver consultas cadastradas, o aplicativo deve apresentar uma mensa
 
 ---
 
-## 7. Dados
+## 7. Dados:
 
 ### Opção A — Room
 
@@ -152,7 +152,7 @@ O Sorriso Marcado não utilizará API externa ou servidor na versão atual. Port
 
 ---
 
-## 8. Arquitetura e tecnologias
+## 8. Arquitetura e tecnologias:
 
 | Item                   | Escolha                              |
 | ---------------------- | ------------------------------------ |
@@ -187,7 +187,7 @@ A camada `data` será responsável pelo armazenamento e gerenciamento dos dados 
 
 ---
 
-## 9. Tratamento de erros
+## 9. Tratamento de erros:
 
 | Situação de falha           | O que o app faz                                                                                | Mensagem para o usuário                                                 |
 | --------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -200,7 +200,7 @@ A camada `data` será responsável pelo armazenamento e gerenciamento dos dados 
 
 ---
 
-## 10. Identidade visual e publicação
+## 10. Identidade visual e publicação:
 
 | Item                          | Definição                                                                                                          | Onde fica            |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------- |
@@ -225,7 +225,7 @@ A camada `data` será responsável pelo armazenamento e gerenciamento dos dados 
 
 ---
 
-## 11. Plano de testes
+## 11. Plano de testes:
 
 | #  | O que testar                  | Passos                                                                       | Resultado esperado                                                        | OK? |
 | -- | ----------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --- |
@@ -244,7 +244,7 @@ Preencher com o modelo dos celulares utilizados pelo grupo e a versão do Androi
 
 ---
 
-## 12. Cronograma
+## 12. Cronograma:
 
 | Marco                                | Prazo          | Responsável        | Status       |
 | ------------------------------------ | -------------- | ------------------ | ------------ |
@@ -258,7 +258,7 @@ Preencher com o modelo dos celulares utilizados pelo grupo e a versão do Androi
 
 ---
 
-## 13. Riscos
+## 13. Riscos:
 
 | Risco                                         | Impacto | Plano B                                                     |
 | --------------------------------------------- | ------- | ----------------------------------------------------------- |
@@ -270,7 +270,7 @@ Preencher com o modelo dos celulares utilizados pelo grupo e a versão do Androi
 
 ---
 
-## 14. Como vamos orientar a implementação com IA
+## 14. Como vamos orientar a implementação com IA:
 
 A Inteligência Artificial será utilizada como ferramenta de apoio durante o desenvolvimento do Sorriso Marcado.
 
@@ -310,7 +310,7 @@ A Inteligência Artificial será utilizada como ferramenta de apoio durante o de
 
 ---
 
-## 15. Histórico de versões deste documento
+## 15. Histórico de versões deste documento:
 
 | Versão | Data       | Autor                                              | O que mudou                                                             |
 | ------ | ---------- | -------------------------------------------------- | ----------------------------------------------------------------------- |
