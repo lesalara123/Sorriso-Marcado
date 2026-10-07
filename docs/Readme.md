@@ -2,7 +2,8 @@
 
 Material de apresentação e documentação do projeto final de **Desenvolvimento Mobile Android**.
 
-**Turma:** 3º ano do Ensino Médio · **Instituição:** IFPE — Campus Palmares · **Entrega:** 10/12/2026
+**Turma:** 3º ano do Ensino Médio · 
+**Instituição:** IFPE — Campus Palmares · **Entrega:** 10/12/2026
 
 O **Sorriso Marcado** é um aplicativo Android desenvolvido para ajudar pacientes a organizar e acompanhar suas consultas odontológicas de forma simples e prática.
 
