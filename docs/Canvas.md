@@ -62,11 +62,11 @@ A consulta cadastrada na lista da tela principal.
 
 **Máximo de 4 funcionalidades. Se tiver mais, corte. Lembre: qualidade acima de complexidade.**
 
-| #  | Funcionalidade                       | Essencial? | Quem faz           |
-| -- | ------------------------------------ | ---------- | ------------------ |
-| F1 | Cadastro de consultas odontológicas  | Sim        | Lara Emanuelle     |
-| F2 | Visualização das consultas agendadas | Sim        | Hiarlley Francisco |
-| F3 | Edição e exclusão de consultas       | Sim        | Marina Calado      |
+| #  | Funcionalidade                       | Essencial? | Responsável principal|
+
+| F1 | Cadastro de consultas odontológicas  | Sim        | Lara Emanuelle  + todos   |
+| F2 | Visualização das consultas agendadas | Sim        | Hiarlley Francisco + todos|
+| F3 | Edição e exclusão de consultas       | Sim        | Marina Calado  + todos    |
 
 ---
 
@@ -124,7 +124,7 @@ Uma mensagem clara informando que não foi possível realizar a ação e orienta
 
 ## 👤 Bloco 9 — Equipe, papéis e riscos
 
-| Integrante         | Papel principal            | Responsável por                             |
+| Integrante         | Papel principal            |Todos                            |
 | ------------------ | -------------------------- | ------------------------------------------- |
 | Lara Emanuelle     | Dev / telas                | Interface e telas do aplicativo             |
 | Hiarlley Francisco | Dev / dados (Room)         | Banco de dados e persistência das consultas |
