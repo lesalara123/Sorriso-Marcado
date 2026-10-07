@@ -36,13 +36,14 @@ Pacientes que realizam consultas odontológicas e precisam organizar seus compro
 
 ---
 
-## 3. Objetivos e não-objetivos
+##3. **Objetivos e não-objetivos**
 
-**Objetivos desta versão (v1.0):**
+Objetivos desta versão (v1.0):
 
-1. Permitir que o usuário cadastre suas consultas odontológicas.
-2. Permitir que o usuário visualize, edite e exclua consultas cadastradas.
-3. Manter os dados organizados e disponíveis localmente, sem depender de conexão com a internet.
+Permitir que o usuário cadastre suas consultas odontológicas.
+Permitir que o usuário visualize, edite e exclua consultas cadastradas.
+Permitir que o dentista cadastre seus horários e dias disponíveis para atendimento, possibilitando que o paciente marque a consulta de acordo com a disponibilidade do profissional.
+Manter os dados organizados e disponíveis localmente, sem depender de conexão com a internet.
 
 **Não-objetivos (fora do escopo):**
 
