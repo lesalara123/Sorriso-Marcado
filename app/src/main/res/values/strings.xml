@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">sorrisomarcado</string>
+    <string name="app_name">Sorriso Marcado</string>
+    <string name="home_title">Sorriso Marcado</string>
+    <string name="home_empty_list">Nenhuma consulta marcada.</string>
+    <string name="home_add_consultation">Cadastrar Consulta</string>
+    <string name="home_loading">Carregando consultas...</string>
+    <string name="consultation_details">%1$s às %2$s - Dr(a). %3$s</string>
 </resources>
