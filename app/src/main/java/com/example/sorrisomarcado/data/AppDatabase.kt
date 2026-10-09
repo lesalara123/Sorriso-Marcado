@@ -1,3 +1,4 @@
+
 package com.example.sorrisomarcado.data
 
 import android.content.Context
@@ -6,13 +7,20 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [Consulta::class, Dentista::class, Paciente::class, Procedimento::class],
+    entities = [
+        Consulta::class,
+        Dentista::class,
+        Paciente::class,
+        Procedimento::class
+    ],
     version = 4,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun consultaDao(): ConsultaDao
+
+    abstract fun pacienteDao(): PacienteDao
 
     companion object {
         @Volatile
@@ -25,8 +33,9 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "sorriso_marcado_database"
                 )
-                .fallbackToDestructiveMigration()
-                .build()
+                    .fallbackToDestructiveMigration()
+                    .build()
+
                 INSTANCE = instance
                 instance
             }

@@ -20,23 +20,33 @@ import com.example.sorrisomarcado.ui.components.MainDestination
 import com.example.sorrisomarcado.ui.screens.CadastroScreen
 import com.example.sorrisomarcado.ui.screens.EdicaoScreen
 import com.example.sorrisomarcado.ui.screens.HomeScreen
+import com.example.sorrisomarcado.ui.screens.PacientesScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
     val context = LocalContext.current
     val application = context.applicationContext as SorrisoApplication
     val repository = application.repository
+    val pacienteDao = application.database.pacienteDao()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val showBottomBar = currentRoute == "home"
+    val showBottomBar = currentRoute in listOf(
+        "home",
+        "pacientes"
+    )
+
+    val selectedDestination = when (currentRoute) {
+        "pacientes" -> MainDestination.Pacientes
+        else -> MainDestination.Agenda
+    }
 
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
                 BottomNavigationBar(
-                    selectedDestination = MainDestination.Agenda,
+                    selectedDestination = selectedDestination,
                     onDestinationSelected = { destination ->
                         when (destination) {
                             MainDestination.Agenda -> {
@@ -48,10 +58,18 @@ fun NavGraph(navController: NavHostController) {
                                 }
                             }
 
-                            MainDestination.Pacientes,
+                            MainDestination.Pacientes -> {
+                                navController.navigate("pacientes") {
+                                    launchSingleTop = true
+                                    popUpTo("home") {
+                                        inclusive = false
+                                    }
+                                }
+                            }
+
                             MainDestination.Dentistas,
                             MainDestination.Mais -> {
-                                // As telas serão implementadas nas próximas etapas.
+                                // Implementaremos essas telas depois.
                             }
                         }
                     }
@@ -104,6 +122,15 @@ fun NavGraph(navController: NavHostController) {
                     consultaId = id,
                     onNavigateBack = {
                         navController.popBackStack()
+                    }
+                )
+            }
+
+            composable("pacientes") {
+                PacientesScreen(
+                    pacienteDao = pacienteDao,
+                    onNovoPaciente = {
+                        navController.navigate("cadastroPaciente")
                     }
                 )
             }

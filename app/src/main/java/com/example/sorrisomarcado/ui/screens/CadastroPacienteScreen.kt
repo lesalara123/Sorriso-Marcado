@@ -1,10 +1,6 @@
 
-
-
 package com.example.sorrisomarcado.ui.screens
 
-
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -41,40 +36,37 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.platform.LocalContext
-import com.example.sorrisomarcado.data.AppDatabase
-import com.example.sorrisomarcado.data.Consulta
+import com.example.sorrisomarcado.data.Paciente
+import com.example.sorrisomarcado.data.PacienteRepository
 import kotlinx.coroutines.launch
 
-private val VerdePrincipal = Color(0xFF174E49)
-private val FundoTela = Color(0xFFF7F5EF)
-private val TextoPrincipal = Color(0xFF173D37)
-private val TextoSecundario = Color(0xFF64736D)
+private val CadastroPacienteVerde = Color(0xFF174E49)
+private val CadastroPacienteFundo = Color(0xFFF7F5EF)
+private val CadastroPacienteTexto = Color(0xFF173D37)
+private val CadastroPacienteSecundario = Color(0xFF64736D)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CadastroScreen(onNavigateBack: () -> Unit) {
-    val context = LocalContext.current
+fun CadastroPacienteScreen(
+    repository: PacienteRepository,
+    onNavigateBack: () -> Unit
+) {
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val db = remember {
-        AppDatabase.getDatabase(context)
-    }
-    val dao = db.consultaDao()
-
-    var data by remember { mutableStateOf("") }
-    var horario by remember { mutableStateOf("") }
-    var dentista by remember { mutableStateOf("") }
-    var procedimento by remember { mutableStateOf("") }
+    var nome by remember { mutableStateOf("") }
+    var cpf by remember { mutableStateOf("") }
+    var telefone by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
 
     var tentouSalvar by remember { mutableStateOf(false) }
     var salvando by remember { mutableStateOf(false) }
 
     Scaffold(
-        containerColor = FundoTela,
+        containerColor = CadastroPacienteFundo,
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
         },
@@ -82,8 +74,8 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Nova consulta",
-                        color = TextoPrincipal,
+                        text = "Novo paciente",
+                        color = CadastroPacienteTexto,
                         fontWeight = FontWeight.SemiBold
                     )
                 },
@@ -94,12 +86,12 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                     ) {
                         Text(
                             text = "Voltar",
-                            color = VerdePrincipal
+                            color = CadastroPacienteVerde
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = FundoTela
+                    containerColor = CadastroPacienteFundo
                 )
             )
         }
@@ -107,7 +99,7 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(FundoTela)
+                .background(CadastroPacienteFundo)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp, vertical = 8.dp),
@@ -117,17 +109,16 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 Text(
-                    text = "Agende um atendimento",
+                    text = "Cadastro de paciente",
                     fontSize = 23.sp,
                     fontWeight = FontWeight.Bold,
-                    color = TextoPrincipal
+                    color = CadastroPacienteTexto
                 )
 
                 Text(
-                    text = "Preencha os dados para registrar uma consulta.",
+                    text = "Informe os dados para registrar o paciente.",
                     fontSize = 13.sp,
-                    color = TextoSecundario,
-                    lineHeight = 18.sp
+                    color = CadastroPacienteSecundario
                 )
             }
 
@@ -148,71 +139,80 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(9.dp)
                 ) {
                     Text(
-                        text = "Dados da consulta",
+                        text = "Dados pessoais",
                         fontSize = 17.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = TextoPrincipal
+                        color = CadastroPacienteTexto
                     )
 
                     OutlinedTextField(
-                        value = data,
-                        onValueChange = { data = it },
+                        value = nome,
+                        onValueChange = { nome = it },
                         modifier = Modifier.fillMaxWidth(),
-                        label = { Text("Data") },
-                        placeholder = { Text("Ex.: 25/10/2026") },
+                        label = { Text("Nome completo *") },
+                        placeholder = { Text("Nome do paciente") },
                         singleLine = true,
-                        isError = tentouSalvar && data.isBlank(),
                         enabled = !salvando,
+                        isError = tentouSalvar && nome.isBlank(),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = cadastroPacienteCampoCores()
+                    )
+
+                    OutlinedTextField(
+                        value = cpf,
+                        onValueChange = { cpf = it },
+                        modifier = Modifier.fillMaxWidth(),
+                        label = { Text("CPF *") },
+                        placeholder = { Text("000.000.000-00") },
+                        singleLine = true,
+                        enabled = !salvando,
+                        isError = tentouSalvar && cpf.isBlank(),
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Text
+                            keyboardType = KeyboardType.Number
                         ),
                         shape = RoundedCornerShape(12.dp),
-                        colors = campoCores()
+                        colors = cadastroPacienteCampoCores()
                     )
 
                     OutlinedTextField(
-                        value = horario,
-                        onValueChange = { horario = it },
+                        value = telefone,
+                        onValueChange = { telefone = it },
                         modifier = Modifier.fillMaxWidth(),
-                        label = { Text("Horário") },
-                        placeholder = { Text("Ex.: 14:30") },
+                        label = { Text("Telefone *") },
+                        placeholder = { Text("(00) 00000-0000") },
                         singleLine = true,
-                        isError = tentouSalvar && horario.isBlank(),
                         enabled = !salvando,
+                        isError = tentouSalvar && telefone.isBlank(),
                         keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Text
+                            keyboardType = KeyboardType.Phone
                         ),
                         shape = RoundedCornerShape(12.dp),
-                        colors = campoCores()
+                        colors = cadastroPacienteCampoCores()
                     )
 
                     OutlinedTextField(
-                        value = dentista,
-                        onValueChange = { dentista = it },
+                        value = email,
+                        onValueChange = { email = it },
                         modifier = Modifier.fillMaxWidth(),
-                        label = { Text("Dentista") },
-                        placeholder = { Text("Nome do dentista") },
+                        label = { Text("E-mail") },
+                        placeholder = { Text("paciente@exemplo.com") },
                         singleLine = true,
-                        isError = tentouSalvar && dentista.isBlank(),
                         enabled = !salvando,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Email
+                        ),
+                        isError = email.isNotBlank() &&
+                                !email.trim().matches(
+                                    Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+                                ),
                         shape = RoundedCornerShape(12.dp),
-                        colors = campoCores()
+                        colors = cadastroPacienteCampoCores()
                     )
 
-                    OutlinedTextField(
-                        value = procedimento,
-                        onValueChange = { procedimento = it },
-                        modifier = Modifier.fillMaxWidth(),
-                        label = { Text("Procedimento") },
-                        placeholder = {
-                            Text("Ex.: Limpeza, avaliação...")
-                        },
-                        minLines = 1,
-                        maxLines = 2,
-                        isError = tentouSalvar && procedimento.isBlank(),
-                        enabled = !salvando,
-                        shape = RoundedCornerShape(12.dp),
-                        colors = campoCores()
+                    Text(
+                        text = "* Campos obrigatórios",
+                        fontSize = 12.sp,
+                        color = CadastroPacienteSecundario
                     )
 
                     Spacer(modifier = Modifier.height(2.dp))
@@ -221,15 +221,20 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                         onClick = {
                             tentouSalvar = true
 
+                            val emailValido = email.isBlank() ||
+                                    email.trim().matches(
+                                        Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+                                    )
+
                             if (
-                                data.isBlank() ||
-                                horario.isBlank() ||
-                                dentista.isBlank() ||
-                                procedimento.isBlank()
+                                nome.isBlank() ||
+                                cpf.isBlank() ||
+                                telefone.isBlank() ||
+                                !emailValido
                             ) {
                                 scope.launch {
                                     snackbarHostState.showSnackbar(
-                                        "Preencha todos os campos obrigatórios."
+                                        "Confira os campos obrigatórios e o e-mail."
                                     )
                                 }
                                 return@Button
@@ -241,19 +246,31 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                                 salvando = true
 
                                 try {
-                                    dao.insert(
-                                        Consulta(
-                                            data = data.trim(),
-                                            horario = horario.trim(),
-                                            dentista = dentista.trim(),
-                                            procedimento = procedimento.trim()
+                                    val cpfLimpo = cpf.trim()
+
+                                    val pacienteExistente =
+                                        repository.getPacienteByCpf(cpfLimpo)
+
+                                    if (pacienteExistente != null) {
+                                        snackbarHostState.showSnackbar(
+                                            "Já existe um paciente cadastrado com esse CPF."
+                                        )
+                                        return@launch
+                                    }
+
+                                    repository.insertPaciente(
+                                        Paciente(
+                                            nome = nome.trim(),
+                                            cpf = cpfLimpo,
+                                            telefone = telefone.trim(),
+                                            email = email.trim()
                                         )
                                     )
 
                                     onNavigateBack()
                                 } catch (e: Exception) {
                                     snackbarHostState.showSnackbar(
-                                        "Não foi possível salvar a consulta. Tente novamente."
+                                        "Não foi possível salvar o paciente. Tente novamente."
                                     )
                                 } finally {
                                     salvando = false
@@ -266,7 +283,7 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                         enabled = !salvando,
                         shape = RoundedCornerShape(12.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = VerdePrincipal,
+                            containerColor = CadastroPacienteVerde,
                             contentColor = Color.White
                         )
                     ) {
@@ -274,7 +291,7 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
                             text = if (salvando) {
                                 "Salvando..."
                             } else {
-                                "Salvar consulta"
+                                "Salvar paciente"
                             },
                             fontSize = 15.sp,
                             fontWeight = FontWeight.SemiBold
@@ -289,14 +306,15 @@ fun CadastroScreen(onNavigateBack: () -> Unit) {
 }
 
 @Composable
-private fun campoCores() = OutlinedTextFieldDefaults.colors(
-    focusedBorderColor = VerdePrincipal,
-    focusedLabelColor = VerdePrincipal,
-    cursorColor = VerdePrincipal,
-    unfocusedBorderColor = Color(0xFFE4E8E1),
-    unfocusedLabelColor = TextoSecundario,
-    focusedTextColor = TextoPrincipal,
-    unfocusedTextColor = TextoPrincipal,
-    errorBorderColor = MaterialTheme.colorScheme.error,
-    errorLabelColor = MaterialTheme.colorScheme.error
-)
+private fun cadastroPacienteCampoCores() =
+    OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = CadastroPacienteVerde,
+        focusedLabelColor = CadastroPacienteVerde,
+        cursorColor = CadastroPacienteVerde,
+        unfocusedBorderColor = Color(0xFFE4E8E1),
+        unfocusedLabelColor = CadastroPacienteSecundario,
+        focusedTextColor = CadastroPacienteTexto,
+        unfocusedTextColor = CadastroPacienteTexto,
+        errorBorderColor = androidx.compose.material3.MaterialTheme.colorScheme.error,
+        errorLabelColor = androidx.compose.material3.MaterialTheme.colorScheme.error
+    )
