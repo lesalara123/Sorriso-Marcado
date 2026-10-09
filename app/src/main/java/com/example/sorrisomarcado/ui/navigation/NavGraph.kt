@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -15,9 +16,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.example.sorrisomarcado.SorrisoApplication
+import com.example.sorrisomarcado.data.PacienteRepository
 import com.example.sorrisomarcado.ui.components.BottomNavigationBar
 import com.example.sorrisomarcado.ui.components.MainDestination
+import com.example.sorrisomarcado.ui.screens.CadastroPacienteScreen
 import com.example.sorrisomarcado.ui.screens.CadastroScreen
+import com.example.sorrisomarcado.ui.screens.EdicaoPacienteScreen
 import com.example.sorrisomarcado.ui.screens.EdicaoScreen
 import com.example.sorrisomarcado.ui.screens.HomeScreen
 import com.example.sorrisomarcado.ui.screens.PacientesScreen
@@ -26,8 +30,13 @@ import com.example.sorrisomarcado.ui.screens.PacientesScreen
 fun NavGraph(navController: NavHostController) {
     val context = LocalContext.current
     val application = context.applicationContext as SorrisoApplication
+
     val repository = application.repository
     val pacienteDao = application.database.pacienteDao()
+
+    val pacienteRepository = remember(pacienteDao) {
+        PacienteRepository(pacienteDao)
+    }
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -83,7 +92,8 @@ fun NavGraph(navController: NavHostController) {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("home") {
-                val homeViewModel: com.example.sorrisomarcado.ui.screens.HomeViewModel =
+                val homeViewModel:
+                        com.example.sorrisomarcado.ui.screens.HomeViewModel =
                     viewModel(
                         factory = com.example.sorrisomarcado.ui.screens.HomeViewModel
                             .provideFactory(repository)
@@ -131,6 +141,38 @@ fun NavGraph(navController: NavHostController) {
                     pacienteDao = pacienteDao,
                     onNovoPaciente = {
                         navController.navigate("cadastroPaciente")
+                    },
+                    onEditarPaciente = { id ->
+                        navController.navigate("edicaoPaciente/$id")
+                    }
+                )
+            }
+
+            composable("cadastroPaciente") {
+                CadastroPacienteScreen(
+                    repository = pacienteRepository,
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+
+            composable(
+                route = "edicaoPaciente/{pacienteId}",
+                arguments = listOf(
+                    navArgument("pacienteId") {
+                        type = NavType.IntType
+                    }
+                )
+            ) { backStackEntry ->
+                val pacienteId =
+                    backStackEntry.arguments?.getInt("pacienteId") ?: 0
+
+                EdicaoPacienteScreen(
+                    pacienteId = pacienteId,
+                    repository = pacienteRepository,
+                    onNavigateBack = {
+                        navController.popBackStack()
                     }
                 )
             }
