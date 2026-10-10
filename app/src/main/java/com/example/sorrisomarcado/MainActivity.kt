@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.sorrisomarcado.ui.navigation.NavGraph
 import com.example.sorrisomarcado.ui.theme.SorrisomarcadoTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
