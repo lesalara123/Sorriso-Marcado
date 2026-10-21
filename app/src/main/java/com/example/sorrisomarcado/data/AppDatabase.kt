@@ -11,9 +11,10 @@ import androidx.room.RoomDatabase
         Consulta::class,
         Dentista::class,
         Paciente::class,
-        Procedimento::class
+        Procedimento::class,
+        Disponibilidade::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -21,6 +22,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun consultaDao(): ConsultaDao
 
     abstract fun pacienteDao(): PacienteDao
+
+    abstract fun disponibilidadeDao(): DisponibilidadeDao
 
     companion object {
         @Volatile

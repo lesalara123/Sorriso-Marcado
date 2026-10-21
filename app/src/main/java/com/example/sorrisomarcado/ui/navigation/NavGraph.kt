@@ -16,6 +16,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.example.sorrisomarcado.SorrisoApplication
+import com.example.sorrisomarcado.DisponibilidadeScreen
+import com.example.sorrisomarcado.data.DisponibilidadeRepository
 import com.example.sorrisomarcado.data.PacienteRepository
 import com.example.sorrisomarcado.ui.components.BottomNavigationBar
 import com.example.sorrisomarcado.ui.components.MainDestination
@@ -38,16 +40,25 @@ fun NavGraph(navController: NavHostController) {
         PacienteRepository(pacienteDao)
     }
 
+    // Repositório da disponibilidade dos dentistas
+    val disponibilidadeDao = application.database.disponibilidadeDao()
+
+    val disponibilidadeRepository = remember(disponibilidadeDao) {
+        DisponibilidadeRepository(disponibilidadeDao)
+    }
+
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
     val showBottomBar = currentRoute in listOf(
         "home",
-        "pacientes"
+        "pacientes",
+        "disponibilidade"
     )
 
     val selectedDestination = when (currentRoute) {
         "pacientes" -> MainDestination.Pacientes
+        "disponibilidade" -> MainDestination.Dentistas
         else -> MainDestination.Agenda
     }
 
@@ -76,9 +87,14 @@ fun NavGraph(navController: NavHostController) {
                                 }
                             }
 
-                            MainDestination.Dentistas,
+                            MainDestination.Dentistas -> {
+                                navController.navigate("disponibilidade") {
+                                    launchSingleTop = true
+                                }
+                            }
+
                             MainDestination.Mais -> {
-                                // Implementaremos essas telas depois.
+                                // Implementaremos essa tela depois.
                             }
                         }
                     }
@@ -174,6 +190,13 @@ fun NavGraph(navController: NavHostController) {
                     onNavigateBack = {
                         navController.popBackStack()
                     }
+                )
+            }
+
+            // Nova tela de disponibilidade dos dentistas
+            composable("disponibilidade") {
+                DisponibilidadeScreen(
+                    repository = disponibilidadeRepository
                 )
             }
         }
