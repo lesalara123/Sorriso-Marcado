@@ -1,0 +1,46 @@
+1. Criação da entidade Disponibilidade
+
+Objetivo
+
+Criar a entidade Disponibilidade para representar os dias e horários em que um dentista poderá atender pacientes, permitindo que essas informações sejam armazenadas localmente e utilizadas futuramente no agendamento de consultas.
+Contexto
+O projeto Sorriso Marcado é um aplicativo Android desenvolvido para a disciplina de Desenvolvimento Mobile Android, utilizando Kotlin, Jetpack Compose e Room para persistência local. 
+
+A nova funcionalidade deve permitir que o dentista informe sua disponibilidade, respeitando a estrutura das entidades já existentes, especialmente Dentista e Consulta.
+
+Prompt
+
+Analise a estrutura do projeto Android Sorriso Marcado, disponível em https://github.com/lesalara123/Sorriso-Marcado, e implemente a entidade Disponibilidade utilizando Kotlin e Room.
+
+Antes de criar o arquivo, examine as entidades existentes, especialmente Dentista e Consulta, para identificar os padrões de nomenclatura, os tipos de dados utilizados e a forma como os identificadores são definidos.
+
+Crie o arquivo Disponibilidade.kt no pacote de dados correto, respeitando a estrutura real do projeto.
+
+A entidade deve representar a disponibilidade de atendimento de um dentista e conter os campos necessários para identificar o registro, o dentista responsável, a data, o horário inicial, o horário final e a situação da disponibilidade, conforme os requisitos da funcionalidade.
+
+Utilize @Entity e @PrimaryKey de acordo com o padrão do Room. Escolha tipos de dados compatíveis com a persistência local e com os componentes que serão utilizados para selecionar datas e horários.
+
+Considere as seguintes regras:
+1. Cada registro deve identificar o dentista ao qual pertence.
+2. O horário final deve ser posterior ao horário inicial.
+3. A disponibilidade deve poder ser consultada por dentista e data.
+4. O modelo deve permitir identificar se o período pode ser utilizado para agendamento.
+5. Os campos devem ser compatíveis com as futuras operações de cadastro, consulta, edição e exclusão.
+Não crie relacionamentos, conversores, dependências ou campos desnecessários sem verificar se são realmente necessários.
+
+Apresente o código completo, incluindo pacote, imports, anotações e propriedades. Explique a função de cada campo e indique o caminho exato para criar o arquivo.
+
+Não modifique outras classes nesta etapa. Caso falte alguma informação sobre a estrutura atual, solicite o código necessário antes de definir detalhes que possam causar incompatibilidade.
+
+
+
+
+Resultado esperado
+
+- Arquivo Disponibilidade.kt criado.
+- Estrutura de dados compatível com Room.
+- Campos preparados para identificar o dentista, a data e o período de atendimento.
+- Modelo compatível com as demais partes da funcionalidade.
+
+Status
+Entidade solicitada. A confirmação da implementação deve ser feita pela análise do código atual.
