@@ -1,0 +1,38 @@
+Integração da tela à navegação
+
+Objetivo
+
+Permitir que a tela de disponibilidade seja acessada dentro do aplicativo sem comprometer as rotas já existentes.
+Contexto
+
+O projeto utiliza Navigation Compose. A nova rota precisa seguir a estrutura real de navegação e respeitar os parâmetros exigidos pela tela.
+Prompt
+Integre a tela de disponibilidade do projeto Sorriso Marcado ao sistema de navegação existente.
+
+Analise o arquivo NavGraph.kt, localizado na estrutura de navegação do aplicativo, e verifique como as rotas são declaradas e como as telas são chamadas.
+
+Realize as seguintes tarefas:
+1. Identifique o padrão atual de declaração de rotas.
+2. Defina uma rota para a tela de disponibilidade, seguindo a nomenclatura existente.
+3. Registre a tela no grafo de navegação utilizando o mecanismo já adotado pelo projeto.
+4. Importe a função composable do pacote correto.
+5. Confira os parâmetros exigidos pela tela, incluindo o identificador do dentista, se necessário.
+6. Preserve as rotas e as funcionalidades anteriores.
+7. Evite criar outro NavController ou duplicar a estrutura de navegação.
+8. Modifique o MainActivity.kt somente se houver necessidade comprovada.
+Apresente o código completo atualizado dos arquivos que precisarem de alteração e explique como abrir a tela pelo aplicativo.
+
+Verifique se os nomes das rotas, os argumentos e a assinatura da tela são compatíveis entre si. Não invente funções ou arquivos sem confirmar a estrutura existente.
+
+Ao final, descreva como testar a navegação e como identificar possíveis erros de compilação.
+
+
+Resultado esperado
+
+- Rota de disponibilidade registrada.
+- Tela acessível pelo fluxo de navegação.
+- Compatibilidade com as rotas existentes.
+- Ausência de alterações desnecessárias na navegação principal.
+
+Status
+Integração especificada. A rota precisa ser testada no aplicativo.
