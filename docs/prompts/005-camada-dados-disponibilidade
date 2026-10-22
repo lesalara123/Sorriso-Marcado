@@ -1,0 +1,40 @@
+4. Criação da camada de acesso aos dados
+
+Objetivo
+
+Organizar o acesso à entidade Disponibilidade, permitindo que a interface utilize as operações de dados sem depender diretamente dos detalhes do banco.
+
+Contexto
+
+A arquitetura do projeto deve ser analisada antes da criação de novas camadas. Se já existir um padrão de repositórios ou ViewModels, a nova funcionalidade deve seguir esse padrão. Se não existir, não se deve introduzir uma arquitetura adicional sem necessidade.
+Prompt
+Analise a arquitetura atual do projeto Sorriso Marcado e verifique como as entidades existentes acessam seus respectivos DAOs.
+
+Caso o projeto já utilize repositórios, implemente DisponibilidadeRepository.kt seguindo o mesmo padrão. Caso não utilize essa camada, avalie se é necessário criá-la para a nova funcionalidade antes de adicionar arquivos.
+
+Se o repositório for necessário, ele deverá utilizar o DisponibilidadeDao para organizar as operações de inserção, consulta, atualização e exclusão.
+
+Disponibilize os métodos necessários para:
+1. Cadastrar uma disponibilidade.
+2. Consultar disponibilidades por dentista.
+3. Consultar períodos por data.
+4. Obter registros disponíveis para agendamento.
+5. Atualizar e excluir registros.
+Respeite os tipos de retorno e os mecanismos assíncronos já utilizados no projeto. Evite duplicar consultas SQL, criar dependências desnecessárias ou executar operações de banco na thread principal.
+
+Verifique como o repositório será acessado pela interface e se a arquitetura atual exige integração com uma ViewModel.
+
+Apresente os arquivos completos que realmente precisarem ser criados ou alterados. Explique o papel de cada classe e preserve as funcionalidades existentes.
+
+Não afirme que o projeto utiliza MVVM ou uma camada de repositório sem confirmar essa informação nos arquivos atuais.
+
+
+Resultado esperado
+
+- Camada de acesso aos dados compatível com a arquitetura existente.
+- Operações organizadas e reutilizáveis.
+- Menor dependência da interface em relação ao DAO.
+- Integração preparada para o fluxo de cadastro.
+
+Status
+Etapa proposta. A necessidade do repositório depende da arquitetura efetivamente implementada.
