@@ -1,0 +1,53 @@
+5. Criação da tela de cadastro de disponibilidade
+
+Objetivo
+
+Criar a interface que permita ao dentista cadastrar e visualizar seus dias e horários de atendimento.
+
+Contexto
+O projeto utiliza Jetpack Compose para construir a interface Android. A nova tela precisa seguir os padrões visuais e técnicos existentes, além de utilizar a camada de dados da funcionalidade.
+
+Prompt
+Implemente uma tela de cadastro e consulta de disponibilidade de atendimento para o aplicativo Sorriso Marcado, utilizando Kotlin e Jetpack Compose.
+
+Antes de escrever o código, analise as telas existentes, os componentes reutilizáveis, os pacotes, o gerenciamento de estado e a forma de acesso aos dados.
+
+A tela deverá permitir que o dentista informe os períodos em que poderá atender pacientes.
+
+Requisitos da interface:
+1. Exibir um título que identifique a funcionalidade.
+2. Permitir selecionar a data de atendimento.
+3. Permitir selecionar o horário inicial e o horário final.
+4. Identificar o dentista responsável pelo registro, utilizando os dados existentes no aplicativo.
+5. Disponibilizar um botão para salvar a disponibilidade.
+6. Exibir os registros já cadastrados.
+7. Apresentar data, horário e situação de cada registro.
+8. Oferecer ações de edição e exclusão, se compatíveis com as operações implementadas.
+9. Exibir mensagens de validação e de erro.
+10. Apresentar um estado vazio quando não houver registros.
+
+Regras de validação:
+- A data e os horários devem ser válidos.
+- O horário final deve ser posterior ao horário inicial.
+- Campos obrigatórios não podem ficar vazios.
+- A gravação deve utilizar a camada de dados existente.
+- A tela deve apresentar o resultado real da operação, sem simular um cadastro bem-sucedido quando houver falha.
+Utilize componentes e APIs compatíveis com as dependências instaladas. Respeite a arquitetura existente e evite operações de banco de dados na thread principal.
+
+Entregue o código completo, incluindo imports e pacote. Informe o caminho exato do arquivo e explique como testar o cadastro e a listagem.
+
+Não altere a navegação nesta etapa. Caso seja necessária uma ViewModel ou outra classe intermediária, verifique primeiro o padrão já utilizado no projeto.
+
+
+
+
+Resultado esperado
+
+- Tela de cadastro e listagem de disponibilidades.
+- Seleção de datas e horários.
+- Validação dos campos.
+- Integração com o armazenamento local.
+- Exibição dos registros cadastrados.
+
+Status
+Tela especificada. O funcionamento depende da integração real com as classes de dados.

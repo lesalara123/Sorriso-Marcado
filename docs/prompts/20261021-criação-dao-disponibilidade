@@ -1,0 +1,44 @@
+3. Criação do DAO de Disponibilidade
+  
+Objetivo
+  
+Criar a camada responsável pelas operações de acesso aos registros da entidade Disponibilidade.
+Contexto
+O DAO permite que a aplicação insira, consulte, atualize e exclua dados utilizando Room, sem precisar executar instruções SQL diretamente na interface.
+
+A implementação deve seguir o padrão dos DAOs já existentes, evitando incompatibilidades entre os nomes das tabelas e os campos da entidade.
+  
+Prompt
+  
+Implemente o acesso aos dados da entidade Disponibilidade no projeto Sorriso Marcado, utilizando Room e Kotlin.
+
+Analise os DAOs existentes para identificar o padrão utilizado pelo projeto e crie o arquivo DisponibilidadeDao.kt no pacote correto.
+
+A interface deve utilizar a anotação @Dao e oferecer operações compatíveis com as necessidades da funcionalidade:
+1. Inserir uma nova disponibilidade.
+2. Consultar todas as disponibilidades cadastradas.
+3. Consultar disponibilidades vinculadas a um dentista específico.
+4. Filtrar registros por data.
+5. Consultar períodos que estejam marcados como disponíveis.
+6. Atualizar os dados de uma disponibilidade.
+7. Excluir um registro quando necessário.
+Utilize @Insert, @Query, @Update e @Delete, conforme apropriado.
+
+As consultas devem utilizar os nomes exatos da tabela e das colunas declaradas em Disponibilidade.kt. Os parâmetros e os tipos de retorno devem ser compatíveis com a entidade.
+
+Siga o padrão de operações assíncronas já adotado pelo projeto. Utilize suspend ou Flow somente quando forem compatíveis com a arquitetura existente.
+
+Não invente nomes de campos nem modifique a entidade sem necessidade. Apresente o código completo com todos os imports, explique a finalidade dos métodos e informe como o DAO será integrado ao AppDatabase.kt.
+
+
+
+
+Resultado esperado
+  
+- Arquivo DisponibilidadeDao.kt implementado.
+- Operações de persistência e consulta disponíveis.
+- Consultas compatíveis com a entidade.
+- Estrutura preparada para integração com a interface
+  
+Status  
+DAO especificado. A implementação e a geração de código pelo Room precisam ser verificadas.

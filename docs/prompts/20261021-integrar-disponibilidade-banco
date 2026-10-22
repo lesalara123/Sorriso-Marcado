@@ -1,0 +1,39 @@
+2. Integração da entidade ao banco de dados
+
+Objetivo
+
+Registrar a entidade Disponibilidade no banco de dados Room para que os registros possam ser persistidos localmente pelo aplicativo.
+Contexto
+O Sorriso Marcado utiliza Room para armazenamento local. A inclusão de uma entidade exige verificar a declaração do banco de dados e a forma como os DAOs existentes são disponibilizados.
+
+Prompt
+
+Analise o arquivo AppDatabase.kt do projeto Sorriso Marcado e integre a nova entidade Disponibilidade ao banco de dados Room.
+
+Antes de modificar o arquivo, verifique a declaração atual da anotação @Database, a lista de entidades registradas, a versão do banco e os DAOs já disponibilizados.
+
+Execute as alterações necessárias para:
+1. Incluir Disponibilidade::class na lista de entidades.
+2. Preservar todas as entidades existentes, incluindo Consulta, Dentista e Paciente, quando presentes.
+3. Disponibilizar o DAO de disponibilidade por meio de uma função abstrata, seguindo o padrão atual.
+4. Conferir os imports e os nomes reais das classes.
+5. Preservar a configuração de criação e acesso ao banco.
+6. Avaliar se a versão do banco precisa ser incrementada e se uma migração é necessária.
+Não remova entidades ou DAOs existentes. Não utilize destruição automática do banco para resolver problemas de migração sem avaliar as consequências para os dados armazenados.
+
+Apresente o código completo atualizado de AppDatabase.kt, baseado no arquivo real do projeto, e explique cada alteração realizada.
+
+Ao final, indique como verificar se o Room reconhece a nova entidade e se o projeto compila corretamente.
+
+
+
+
+Resultado esperado
+
+- Entidade registrada no banco de dados.
+- DAO disponibilizado pelo AppDatabase.
+- Preservação das entidades existentes.
+- Configuração de persistência compatível com a implementação atual.
+
+Status
+Integração solicitada. A compilação e a configuração do banco precisam ser verificadas no Android Studio.
