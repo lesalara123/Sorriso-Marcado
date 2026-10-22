@@ -16,7 +16,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.example.sorrisomarcado.SorrisoApplication
-import com.example.sorrisomarcado.DisponibilidadeScreen
 import com.example.sorrisomarcado.data.DisponibilidadeRepository
 import com.example.sorrisomarcado.data.PacienteRepository
 import com.example.sorrisomarcado.ui.components.BottomNavigationBar
@@ -27,6 +26,7 @@ import com.example.sorrisomarcado.ui.screens.EdicaoPacienteScreen
 import com.example.sorrisomarcado.ui.screens.EdicaoScreen
 import com.example.sorrisomarcado.ui.screens.HomeScreen
 import com.example.sorrisomarcado.ui.screens.PacientesScreen
+import com.example.sorrisomarcado.DisponibilidadeScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -197,6 +197,8 @@ fun NavGraph(navController: NavHostController) {
             composable("disponibilidade") {
                 DisponibilidadeScreen(
                     repository = disponibilidadeRepository
+                )
+            }
                 )
             }
         }
