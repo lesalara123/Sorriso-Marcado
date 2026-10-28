@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -39,7 +41,8 @@ private val PacienteSecundario = Color(0xFF64736D)
 fun PacientesScreen(
     pacienteDao: PacienteDao,
     onNovoPaciente: () -> Unit,
-    onEditarPaciente: (Int) -> Unit
+    onEditarPaciente: (Int) -> Unit,
+    onVerDetalhes: (Int) -> Unit
 ) {
     val pacientes by pacienteDao.getAll().collectAsState(initial = emptyList())
     var busca by remember { mutableStateOf("") }
@@ -76,7 +79,7 @@ fun PacientesScreen(
             Button(
                 onClick = onNovoPaciente,
                 modifier = Modifier.fillMaxWidth(),
-                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                colors = ButtonDefaults.buttonColors(
                     containerColor = PacienteVerde
                 )
             ) {
@@ -94,7 +97,7 @@ fun PacientesScreen(
                 )
             } else {
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(
@@ -105,6 +108,9 @@ fun PacientesScreen(
                             paciente = paciente,
                             onEditar = {
                                 onEditarPaciente(paciente.id)
+                            },
+                            onVerDetalhes = {
+                                onVerDetalhes(paciente.id)
                             }
                         )
                     }
@@ -117,7 +123,8 @@ fun PacientesScreen(
 @Composable
 private fun PacienteCard(
     paciente: Paciente,
-    onEditar: () -> Unit
+    onEditar: () -> Unit,
+    onVerDetalhes: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -157,10 +164,19 @@ private fun PacienteCard(
                 )
             }
 
+            Spacer(modifier = Modifier.height(4.dp))
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
             ) {
+                TextButton(onClick = onVerDetalhes) {
+                    Text(
+                        text = "Ver detalhes",
+                        color = PacienteVerde
+                    )
+                }
+
                 TextButton(onClick = onEditar) {
                     Text(
                         text = "Editar",

@@ -8,13 +8,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
+
 import com.example.sorrisomarcado.SorrisoApplication
 import com.example.sorrisomarcado.data.DisponibilidadeRepository
 import com.example.sorrisomarcado.data.PacienteRepository
@@ -22,6 +22,7 @@ import com.example.sorrisomarcado.ui.components.BottomNavigationBar
 import com.example.sorrisomarcado.ui.components.MainDestination
 import com.example.sorrisomarcado.ui.screens.CadastroPacienteScreen
 import com.example.sorrisomarcado.ui.screens.CadastroScreen
+import com.example.sorrisomarcado.ui.screens.DetalhesPacienteScreen
 import com.example.sorrisomarcado.ui.screens.EdicaoPacienteScreen
 import com.example.sorrisomarcado.ui.screens.EdicaoScreen
 import com.example.sorrisomarcado.ui.screens.HomeScreen
@@ -30,25 +31,31 @@ import com.example.sorrisomarcado.DisponibilidadeScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
-    val context = LocalContext.current
-    val application = context.applicationContext as SorrisoApplication
 
-    val repository = application.repository
+    val context = LocalContext.current
+
+    val application =
+        context.applicationContext as SorrisoApplication
+
     val pacienteDao = application.database.pacienteDao()
 
     val pacienteRepository = remember(pacienteDao) {
         PacienteRepository(pacienteDao)
     }
 
-    // Repositório da disponibilidade dos dentistas
-    val disponibilidadeDao = application.database.disponibilidadeDao()
+    val disponibilidadeDao =
+        application.database.disponibilidadeDao()
 
-    val disponibilidadeRepository = remember(disponibilidadeDao) {
-        DisponibilidadeRepository(disponibilidadeDao)
-    }
+    val disponibilidadeRepository =
+        remember(disponibilidadeDao) {
+            DisponibilidadeRepository(disponibilidadeDao)
+        }
 
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
+    val navBackStackEntry by
+    navController.currentBackStackEntryAsState()
+
+    val currentRoute =
+        navBackStackEntry?.destination?.route
 
     val showBottomBar = currentRoute in listOf(
         "home",
@@ -69,6 +76,7 @@ fun NavGraph(navController: NavHostController) {
                     selectedDestination = selectedDestination,
                     onDestinationSelected = { destination ->
                         when (destination) {
+
                             MainDestination.Agenda -> {
                                 navController.navigate("home") {
                                     launchSingleTop = true
@@ -94,7 +102,7 @@ fun NavGraph(navController: NavHostController) {
                             }
 
                             MainDestination.Mais -> {
-                                // Implementaremos essa tela depois.
+                                // Esta opção será implementada depois.
                             }
                         }
                     }
@@ -102,21 +110,16 @@ fun NavGraph(navController: NavHostController) {
             }
         }
     ) { innerPadding ->
+
         NavHost(
             navController = navController,
             startDestination = "home",
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable("home") {
-                val homeViewModel:
-                        com.example.sorrisomarcado.ui.screens.HomeViewModel =
-                    viewModel(
-                        factory = com.example.sorrisomarcado.ui.screens.HomeViewModel
-                            .provideFactory(repository)
-                    )
 
+            // Tela inicial
+            composable("home") {
                 HomeScreen(
-                    viewModel = homeViewModel,
                     onNavigateToCadastro = {
                         navController.navigate("cadastro")
                     },
@@ -126,6 +129,7 @@ fun NavGraph(navController: NavHostController) {
                 )
             }
 
+            // Cadastro de consulta
             composable("cadastro") {
                 CadastroScreen(
                     onNavigateBack = {
@@ -134,6 +138,7 @@ fun NavGraph(navController: NavHostController) {
                 )
             }
 
+            // Edição de consulta
             composable(
                 route = "edicao/{consultaId}",
                 arguments = listOf(
@@ -142,7 +147,9 @@ fun NavGraph(navController: NavHostController) {
                     }
                 )
             ) { backStackEntry ->
-                val id = backStackEntry.arguments?.getInt("consultaId") ?: 0
+
+                val id =
+                    backStackEntry.arguments?.getInt("consultaId") ?: 0
 
                 EdicaoScreen(
                     consultaId = id,
@@ -152,6 +159,7 @@ fun NavGraph(navController: NavHostController) {
                 )
             }
 
+            // Lista de pacientes
             composable("pacientes") {
                 PacientesScreen(
                     pacienteDao = pacienteDao,
@@ -160,10 +168,14 @@ fun NavGraph(navController: NavHostController) {
                     },
                     onEditarPaciente = { id ->
                         navController.navigate("edicaoPaciente/$id")
+                    },
+                    onVerDetalhes = { id ->
+                        navController.navigate("detalhesPaciente/$id")
                     }
                 )
             }
 
+            // Cadastro de paciente
             composable("cadastroPaciente") {
                 CadastroPacienteScreen(
                     repository = pacienteRepository,
@@ -173,6 +185,7 @@ fun NavGraph(navController: NavHostController) {
                 )
             }
 
+            // Edição de paciente
             composable(
                 route = "edicaoPaciente/{pacienteId}",
                 arguments = listOf(
@@ -181,6 +194,7 @@ fun NavGraph(navController: NavHostController) {
                     }
                 )
             ) { backStackEntry ->
+
                 val pacienteId =
                     backStackEntry.arguments?.getInt("pacienteId") ?: 0
 
@@ -193,7 +207,29 @@ fun NavGraph(navController: NavHostController) {
                 )
             }
 
-            // Nova tela de disponibilidade dos dentistas
+            // Detalhes do paciente
+            composable(
+                route = "detalhesPaciente/{pacienteId}",
+                arguments = listOf(
+                    navArgument("pacienteId") {
+                        type = NavType.IntType
+                    }
+                )
+            ) { backStackEntry ->
+
+                val pacienteId =
+                    backStackEntry.arguments?.getInt("pacienteId") ?: 0
+
+                DetalhesPacienteScreen(
+                    pacienteId = pacienteId,
+                    pacienteDao = pacienteDao,
+                    onVoltar = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+
+            // Disponibilidade dos dentistas
             composable("disponibilidade") {
                 DisponibilidadeScreen(
                     repository = disponibilidadeRepository
@@ -203,4 +239,11 @@ fun NavGraph(navController: NavHostController) {
             }
         }
     }
+}
+
+@Composable
+fun DisponibilidadeScreen(
+    repository: DisponibilidadeRepository
+) {
+    TODO("Not yet implemented")
 }
