@@ -11,8 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -32,11 +33,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sorrisomarcado.data.Paciente
@@ -47,6 +48,40 @@ private val EdicaoPacienteVerde = Color(0xFF174E49)
 private val EdicaoPacienteFundo = Color(0xFFF7F5EF)
 private val EdicaoPacienteTexto = Color(0xFF173D37)
 private val EdicaoPacienteSecundario = Color(0xFF64736D)
+
+private fun cpfEdicaoValido(cpf: String): Boolean {
+    val numeros = cpf.filter { it.isDigit() }
+
+    if (numeros.length != 11) return false
+    if (numeros.all { it == numeros[0] }) return false
+
+    fun calcularDigito(base: String, pesos: IntArray): Int {
+        val soma = base.mapIndexed { index, caractere ->
+            caractere.digitToInt() * pesos[index]
+        }.sum()
+
+        val resto = soma % 11
+        return if (resto < 2) 0 else 11 - resto
+    }
+
+    val primeiroDigito = calcularDigito(
+        numeros.substring(0, 9),
+        intArrayOf(10, 9, 8, 7, 6, 5, 4, 3, 2)
+    )
+
+    val segundoDigito = calcularDigito(
+        numeros.substring(0, 9) + primeiroDigito,
+        intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2)
+    )
+
+    return numeros[9].digitToInt() == primeiroDigito &&
+            numeros[10].digitToInt() == segundoDigito
+}
+
+private fun telefoneEdicaoValido(telefone: String): Boolean {
+    val numeros = telefone.filter { it.isDigit() }
+    return numeros.length == 10 || numeros.length == 11
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -124,18 +159,21 @@ fun EdicaoPacienteScreen(
             )
         }
     ) { innerPadding ->
+
         if (carregando) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding),
                 verticalArrangement = Arrangement.Center,
-                horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 CircularProgressIndicator(
                     color = EdicaoPacienteVerde
                 )
+
                 Spacer(modifier = Modifier.height(12.dp))
+
                 Text("Carregando dados do paciente...")
             }
         } else if (pacienteOriginal == null) {
@@ -230,8 +268,9 @@ fun EdicaoPacienteScreen(
                 Button(
                     onClick = {
                         val nomeFinal = nome.trim()
-                        val cpfFinal = cpf.trim()
-                        val telefoneFinal = telefone.trim()
+                        val cpfFinal = cpf.filter { it.isDigit() }
+                        val telefoneFinal =
+                            telefone.filter { it.isDigit() }
                         val emailFinal = email.trim()
 
                         when {
@@ -243,18 +282,18 @@ fun EdicaoPacienteScreen(
                                 }
                             }
 
-                            cpfFinal.isBlank() -> {
+                            !cpfEdicaoValido(cpfFinal) -> {
                                 scope.launch {
                                     snackbarHostState.showSnackbar(
-                                        "Informe o CPF do paciente."
+                                        "Informe um CPF válido."
                                     )
                                 }
                             }
 
-                            telefoneFinal.isBlank() -> {
+                            !telefoneEdicaoValido(telefoneFinal) -> {
                                 scope.launch {
                                     snackbarHostState.showSnackbar(
-                                        "Informe o telefone do paciente."
+                                        "Informe um telefone com DDD válido."
                                     )
                                 }
                             }
@@ -276,7 +315,9 @@ fun EdicaoPacienteScreen(
 
                                     try {
                                         val existente =
-                                            repository.getPacienteByCpf(cpfFinal)
+                                            repository.getPacienteByCpf(
+                                                cpfFinal
+                                            )
 
                                         if (
                                             existente != null &&
@@ -322,8 +363,7 @@ fun EdicaoPacienteScreen(
                 ) {
                     if (salvando) {
                         CircularProgressIndicator(
-                            modifier = Modifier
-                                .height(20.dp),
+                            modifier = Modifier.height(20.dp),
                             color = Color.White,
                             strokeWidth = 2.dp
                         )

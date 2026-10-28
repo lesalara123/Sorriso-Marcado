@@ -1,4 +1,3 @@
-
 package com.example.sorrisomarcado.ui.screens
 
 import androidx.compose.foundation.background
@@ -12,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -36,7 +36,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sorrisomarcado.data.Paciente
@@ -47,6 +46,51 @@ private val CadastroPacienteVerde = Color(0xFF174E49)
 private val CadastroPacienteFundo = Color(0xFFF7F5EF)
 private val CadastroPacienteTexto = Color(0xFF173D37)
 private val CadastroPacienteSecundario = Color(0xFF64736D)
+
+// Valida o CPF, incluindo os dígitos verificadores.
+private fun cpfValido(cpf: String): Boolean {
+    val numeros = cpf.filter { it.isDigit() }
+
+    if (numeros.length != 11) return false
+    if (numeros.all { it == numeros[0] }) return false
+
+    fun calcularDigito(base: String, pesos: IntArray): Int {
+        val soma = base.mapIndexed { index, caractere ->
+            caractere.digitToInt() * pesos[index]
+        }.sum()
+
+        val resto = soma % 11
+        return if (resto < 2) 0 else 11 - resto
+    }
+
+    val primeiroDigito = calcularDigito(
+        numeros.substring(0, 9),
+        intArrayOf(10, 9, 8, 7, 6, 5, 4, 3, 2)
+    )
+
+    val segundoDigito = calcularDigito(
+        numeros.substring(0, 9) + primeiroDigito,
+        intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2)
+    )
+
+    return numeros[9].digitToInt() == primeiroDigito &&
+            numeros[10].digitToInt() == segundoDigito
+}
+
+// Aceita telefones brasileiros com 10 ou 11 dígitos.
+private fun telefoneValido(telefone: String): Boolean {
+    val numeros = telefone.filter { it.isDigit() }
+    return numeros.length == 10 || numeros.length == 11
+}
+
+// O e-mail é opcional, mas precisa ter formato válido quando preenchido.
+private fun emailValido(email: String): Boolean {
+    if (email.isBlank()) return true
+
+    return email.trim().matches(
+        Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+    )
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,6 +108,10 @@ fun CadastroPacienteScreen(
 
     var tentouSalvar by remember { mutableStateOf(false) }
     var salvando by remember { mutableStateOf(false) }
+
+    val cpfEstaValido = cpfValido(cpf)
+    val telefoneEstaValido = telefoneValido(telefone)
+    val emailEstaValido = emailValido(email)
 
     Scaffold(
         containerColor = CadastroPacienteFundo,
@@ -96,6 +144,7 @@ fun CadastroPacienteScreen(
             )
         }
     ) { innerPadding ->
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -105,6 +154,7 @@ fun CadastroPacienteScreen(
                 .padding(horizontal = 16.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
+
             Column(
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
@@ -132,12 +182,14 @@ fun CadastroPacienteScreen(
                     defaultElevation = 1.dp
                 )
             ) {
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(14.dp),
                     verticalArrangement = Arrangement.spacedBy(9.dp)
                 ) {
+
                     Text(
                         text = "Dados pessoais",
                         fontSize = 17.sp,
@@ -145,6 +197,7 @@ fun CadastroPacienteScreen(
                         color = CadastroPacienteTexto
                     )
 
+                    // Nome do paciente
                     OutlinedTextField(
                         value = nome,
                         onValueChange = { nome = it },
@@ -158,6 +211,7 @@ fun CadastroPacienteScreen(
                         colors = cadastroPacienteCampoCores()
                     )
 
+                    // CPF
                     OutlinedTextField(
                         value = cpf,
                         onValueChange = { cpf = it },
@@ -166,7 +220,7 @@ fun CadastroPacienteScreen(
                         placeholder = { Text("000.000.000-00") },
                         singleLine = true,
                         enabled = !salvando,
-                        isError = tentouSalvar && cpf.isBlank(),
+                        isError = tentouSalvar && !cpfValido(cpf),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Number
                         ),
@@ -174,6 +228,16 @@ fun CadastroPacienteScreen(
                         colors = cadastroPacienteCampoCores()
                     )
 
+                    if (tentouSalvar && !cpfValido(cpf)) {
+                        Text(
+                            text = "Informe um CPF válido.",
+                            color = androidx.compose.material3.MaterialTheme
+                                .colorScheme.error,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    // Telefone
                     OutlinedTextField(
                         value = telefone,
                         onValueChange = { telefone = it },
@@ -182,7 +246,7 @@ fun CadastroPacienteScreen(
                         placeholder = { Text("(00) 00000-0000") },
                         singleLine = true,
                         enabled = !salvando,
-                        isError = tentouSalvar && telefone.isBlank(),
+                        isError = tentouSalvar && !telefoneValido(telefone),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Phone
                         ),
@@ -190,6 +254,16 @@ fun CadastroPacienteScreen(
                         colors = cadastroPacienteCampoCores()
                     )
 
+                    if (tentouSalvar && !telefoneValido(telefone)) {
+                        Text(
+                            text = "Informe um telefone com DDD e número válido.",
+                            color = androidx.compose.material3.MaterialTheme
+                                .colorScheme.error,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    // E-mail
                     OutlinedTextField(
                         value = email,
                         onValueChange = { email = it },
@@ -201,13 +275,19 @@ fun CadastroPacienteScreen(
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Email
                         ),
-                        isError = email.isNotBlank() &&
-                                !email.trim().matches(
-                                    Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
-                                ),
+                        isError = tentouSalvar && !emailValido(email),
                         shape = RoundedCornerShape(12.dp),
                         colors = cadastroPacienteCampoCores()
                     )
+
+                    if (tentouSalvar && !emailValido(email)) {
+                        Text(
+                            text = "Informe um e-mail válido.",
+                            color = androidx.compose.material3.MaterialTheme
+                                .colorScheme.error,
+                            fontSize = 12.sp
+                        )
+                    }
 
                     Text(
                         text = "* Campos obrigatórios",
@@ -221,32 +301,29 @@ fun CadastroPacienteScreen(
                         onClick = {
                             tentouSalvar = true
 
-                            val emailValido = email.isBlank() ||
-                                    email.trim().matches(
-                                        Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
-                                    )
+                            if (salvando) return@Button
 
                             if (
                                 nome.isBlank() ||
-                                cpf.isBlank() ||
-                                telefone.isBlank() ||
-                                !emailValido
+                                !cpfValido(cpf) ||
+                                !telefoneValido(telefone) ||
+                                !emailValido(email)
                             ) {
                                 scope.launch {
                                     snackbarHostState.showSnackbar(
-                                        "Confira os campos obrigatórios e o e-mail."
+                                        "Confira os campos e corrija os dados inválidos."
                                     )
                                 }
                                 return@Button
                             }
 
-                            if (salvando) return@Button
-
                             scope.launch {
                                 salvando = true
 
                                 try {
-                                    val cpfLimpo = cpf.trim()
+                                    val cpfLimpo = cpf.filter { it.isDigit() }
+                                    val telefoneLimpo =
+                                        telefone.filter { it.isDigit() }
 
                                     val pacienteExistente =
                                         repository.getPacienteByCpf(cpfLimpo)
@@ -262,12 +339,13 @@ fun CadastroPacienteScreen(
                                         Paciente(
                                             nome = nome.trim(),
                                             cpf = cpfLimpo,
-                                            telefone = telefone.trim(),
+                                            telefone = telefoneLimpo,
                                             email = email.trim()
                                         )
                                     )
 
                                     onNavigateBack()
+
                                 } catch (e: Exception) {
                                     snackbarHostState.showSnackbar(
                                         "Não foi possível salvar o paciente. Tente novamente."
@@ -315,6 +393,8 @@ private fun cadastroPacienteCampoCores() =
         unfocusedLabelColor = CadastroPacienteSecundario,
         focusedTextColor = CadastroPacienteTexto,
         unfocusedTextColor = CadastroPacienteTexto,
-        errorBorderColor = androidx.compose.material3.MaterialTheme.colorScheme.error,
-        errorLabelColor = androidx.compose.material3.MaterialTheme.colorScheme.error
+        errorBorderColor = androidx.compose.material3.MaterialTheme
+            .colorScheme.error,
+        errorLabelColor = androidx.compose.material3.MaterialTheme
+            .colorScheme.error
     )
